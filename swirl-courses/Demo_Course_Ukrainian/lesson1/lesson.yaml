@@ -1,0 +1,43 @@
+- Class: meta
+  Course: Demo Course Ukrainian
+  Lesson: Basic Operations
+  Author: RB-FIDES Training Team
+  Type: Standard
+  Organization: RB-FIDES
+  Version: 1.0.0
+
+- Class: text
+  Output: Ласкаво просимо до демонстраційного курсу R! Цей урок навчить вас основним операціям у R. Ми почнемо з простих математичних обчислень.
+
+- Class: cmd_question
+  Output: Давайте почнемо з простого прикладу. Введіть 5 + 3 і натисніть Enter.
+  CorrectAnswer: 5 + 3
+  AnswerTests: omnitest(correctExpr='5 + 3')
+  Hint: Просто введіть 5 + 3 і натисніть Enter.
+
+- Class: text
+  Output: Відмінно! R може виконувати основні арифметичні операції. Тепер спробуємо інші операції.
+
+- Class: cmd_question
+  Output: Тепер помножте 4 на 7. Введіть відповідну команду.
+  CorrectAnswer: 4 * 7
+  AnswerTests: omnitest(correctExpr='4 * 7')
+  Hint: Використовуйте символ * для множення: 4 * 7
+
+- Class: text
+  Output: Чудово! Символ * використовується для множення у R. Далі ми вивчимо змінні.
+
+- Class: cmd_question
+  Output: Створіть змінну з іменем 'x' і присвойте їй значення 10. Використовуйте оператор <-.
+  CorrectAnswer: x <- 10
+  AnswerTests: omnitest(correctExpr='x <- 10')
+  Hint: Введіть x <- 10 для створення змінної.
+
+- Class: cmd_question
+  Output: Тепер подивіться значення змінної x, просто введіть x.
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Просто введіть x і натисніть Enter.
+
+- Class: text
+  Output: Вітаємо! Ви завершили перший урок. У наступному уроці ми вивчимо роботу з даними.
