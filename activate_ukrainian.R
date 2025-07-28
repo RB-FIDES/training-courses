@@ -547,6 +547,13 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   lesson_path <- file.path(local_courses_dir, course_name, lesson_name)
   if(!dir.exists(lesson_path)) stop(paste0(al("not_found_local"), lesson_path))
   
+  # --- NEW: backup original lesson.yaml as lesson_original.yaml (once) ---
+  lesson_yaml_path <- file.path(lesson_path, "lesson.yaml")
+  lesson_original_path <- file.path(lesson_path, "lesson_original.yaml")
+  if (file.exists(lesson_yaml_path) && !file.exists(lesson_original_path)) {
+    file.copy(lesson_yaml_path, lesson_original_path, overwrite = FALSE)
+  }
+  
   orig_files <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = TRUE)
   orig_contents <- lapply(orig_files, function(f) {
     if (file.exists(f)) readLines(f, warn = FALSE) else character(0)
@@ -563,10 +570,15 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
     }
   }
   
+  # --- NEW: Add lesson_original.yaml to yaml_files if it exists ---
   yaml_files <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = FALSE)
   yaml_files <- yaml_files[yaml_files != "lesson.yaml"]
+  if (file.exists(lesson_original_path) && !("lesson_original.yaml" %in% yaml_files)) {
+    yaml_files <- c(yaml_files, "lesson_original.yaml")
+  }
+  
   if(length(yaml_files) == 0) {
-    if (file.exists(file.path(lesson_path, "lesson.yaml"))) {
+    if (file.exists(lesson_yaml_path)) {
       cat(al("only_lesson_yaml"))
     } else {
       cat(al("no_yaml"))
@@ -576,8 +588,8 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   exit_idx3 <- length(yaml_files) + 1
   
   active_yaml <- NULL
-  if (file.exists(file.path(lesson_path, "lesson.yaml"))) {
-    lesson_yaml_txt <- tryCatch(readLines(file.path(lesson_path, "lesson.yaml"), warn = FALSE), error = function(e) NULL)
+  if (file.exists(lesson_yaml_path)) {
+    lesson_yaml_txt <- tryCatch(readLines(lesson_yaml_path, warn = FALSE), error = function(e) NULL)
     for (f in yaml_files) {
       yaml_txt <- tryCatch(readLines(file.path(lesson_path, f), warn = FALSE), error = function(e) NULL)
       if (!is.null(lesson_yaml_txt) && !is.null(yaml_txt) && identical(lesson_yaml_txt, yaml_txt)) {
@@ -625,7 +637,6 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
     return(invisible(NULL))
   }
   
-  lesson_yaml_path <- file.path(lesson_path, "lesson.yaml")
   selected_yaml_path <- file.path(lesson_path, selected_yaml)
   file.copy(selected_yaml_path, lesson_yaml_path, overwrite = TRUE)
   
