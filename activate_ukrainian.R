@@ -1,6 +1,5 @@
 # MAIN FILE FOR ACTIVATING UKRAINIAN LANGUAGE IN SWIRL
 
-# Load labels dictionary
 source("activate_ukrainian_labels.R")
 
 al <- function(name, lang = NULL) {
@@ -183,7 +182,7 @@ activate <- function(demo = FALSE, test = FALSE) {
 }
 
 # ==============================
-# REstart activate() # admin only
+# REstart activate() 
 # ==============================
 restart_activate_ukrainian_full <- function(...) {
   if (exists(".swirl_ua_session_started", envir = .GlobalEnv)) {
@@ -206,11 +205,13 @@ restart_activate_ukrainian_full <- function(...) {
 reset_activate<- function() {
   assign(".swirl_ua_session_started", FALSE, envir = .GlobalEnv)
   sys.source("activate_ukrainian.R", envir = .GlobalEnv)
+  deactivate_ukrainian_translation()
   cat("Прапорець активації було скинуто. Функцію activate() відновлено, можна запускати activate() знову.\n")
 }
 
 quick_restart_activate <- function(...) {
   reset_activate()
+  deactivate_ukrainian_translation()
   activate(...)
 }
 
@@ -505,7 +506,6 @@ quick_test <- function() {
 
 
 change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
-  # Use labels according to lang_code ("uk" or "en")
   lang_code <- if (exists("lang_code", envir = .GlobalEnv)) get("lang_code", envir = .GlobalEnv) else "uk"
   al <- get("al", envir = .GlobalEnv, inherits = TRUE)
   
