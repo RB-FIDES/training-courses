@@ -10,6 +10,16 @@
 - Завантажити курси які бажаєте та помістити їх у `training-courses/swirl_courses/` (наприклад, `swirl_courses/Demo_Course_Ukrainian`)
 - Завантажити пакет **swirl()** (`library(swirl)`)
 
+## Підготовка середовища
+```r
+install.packages("swirl")
+```
+Встановлюємо пакет **swirl**
+```r
+library(swirl)
+```
+Активуємо пакет **swirl**
+
 **Ви готові до запуску!**
 
 ## Покрокова інструкція 
