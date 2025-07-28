@@ -6,6 +6,7 @@ Interactive courses for learning statistics and data analysis with full Ukrainia
 
 ## 🇺🇦 Quick Start Ukrainian / Швидкий старт українською
 
+Цей спосіб активації рекомендується:
 ```r
 # Install swirl package / Встановити пакет swirl
 install.packages("swirl")
@@ -15,17 +16,27 @@ library(swirl)
 source("activate_ukrainian.R")
 activate()
 ```
+Якщо у вас виникає проблеми з активацією, то слід використати наступний спосіб:
+```r
+source("setup_complete.R")
+```
+If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
 
 ## 📚 Available Courses / Доступні курси
 
 This repository hosts interactive swirl courses with Ukrainian translation support. Each course includes:
 
-Цей репозиторій містить інтерактивні курси swirl з підтримкою українського перекладу. Кожен курс включає:
+Ця репозиторія містить інтерактивні курси swirl з підтримкою українського перекладу. Кожен курс включає:
 
 - English infrastructure code / Англійський код інфраструктури
 - Ukrainian documentation and narration / Українська документація та пояснення
 - Interactive exercises / Інтерактивні вправи
 - Progress tracking / Відстеження прогресу
+- AI-assisted course development / Розробка курсів за допомогою AI
+
+##  📚 Доступні курси українською 📚
+ - R_Programming_ALT ( 1 - 4 уроки)
+ - Demo_Course_Ukrainian (повністю)
 
 ## 🔄 Translation Workflow / Робочий процес перекладу
 
@@ -58,9 +69,3 @@ This project uses the [FIDES framework](ai/FIDES.md) for human-AI collaborative 
 ## 📄 License / Ліцензія
 
 MIT License - see [LICENSE](LICENSE) file for details
-
----
-
-**AI-Human Symbiosis Acknowledgment**  
-Ukrainian language support and course development through AI-human collaboration.  
-*Framework:* FIDES - Framework for Interpretive Dialogue and Epistemic Symbiosis
