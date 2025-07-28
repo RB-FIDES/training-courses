@@ -4,10 +4,8 @@
 library(yaml)
 
 extract_lesson_text <- function(lesson_file) {
-  """
-  Extract translatable text from a swirl lesson file
-  Витягти текст для перекладу з файлу уроку swirl
-  """
+  # Extract translatable text from a swirl lesson file
+  # Витягти текст для перекладу з файлу уроку swirl
   
   if (!file.exists(lesson_file)) {
     stop("Lesson file not found: ", lesson_file)
@@ -38,10 +36,8 @@ extract_lesson_text <- function(lesson_file) {
 }
 
 extract_course_text <- function(course_name) {
-  """
-  Extract all translatable text from a course
-  Витягти весь текст для перекладу з курсу
-  """
+  # Extract all translatable text from a course
+  # Витягти весь текст для перекладу з курсу
   
   course_path <- file.path("swirl-courses", course_name)
   
@@ -69,10 +65,8 @@ extract_course_text <- function(course_name) {
 }
 
 write_for_translation <- function(course_text, output_file) {
-  """
-  Write extracted text to file for AI translation
-  Записати витягнутий текст у файл для перекладу AI
-  """
+  # Write extracted text to file for AI translation
+  # Записати витягнутий текст у файл для перекладу AI
   
   cat("# Swirl Course Translation File\n", file = output_file)
   cat("# Generated on:", Sys.time(), "\n\n", file = output_file, append = TRUE)
