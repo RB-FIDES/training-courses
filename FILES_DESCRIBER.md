@@ -1,6 +1,6 @@
 # This `.md` file contain the description of the files in the repository
 
-## It would be useful for people how have some knowledge of swirl and R (the English base level is requiered)
+## It would be useful for people who have some knowledge of swirl and R (the English base level is requiered)
 
 ### .R files (in main directory)
 
