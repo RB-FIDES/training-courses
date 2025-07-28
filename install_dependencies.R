@@ -1,5 +1,22 @@
 #!/usr/bin/env Rscript
 
+# NOTICE: This file has been consolidated into setup_complete.R
+# УВАГА: Цей файл було консолідовано в setup_complete.R
+#
+# For new installations, please use:
+# Для нових встановлень, будь ласка, використовуйте:
+#   source("setup_complete.R")
+#   setup_training_courses()
+#
+# This file is kept for backward compatibility only.
+# Цей файл зберігається лише для зворотної сумісності.
+
+cat("⚠️  DEPRECATION NOTICE / ПОВІДОМЛЕННЯ ПРО ЗАСТАРІЛІСТЬ ⚠️\n")
+cat("This script has been integrated into setup_complete.R\n")
+cat("Цей скрипт було інтегровано в setup_complete.R\n")
+cat("Please use: source('setup_complete.R') instead\n")
+cat("Будь ласка, використовуйте: source('setup_complete.R') замість цього\n\n")
+
 # Install Dependencies for Ukrainian Training Courses
 # Встановлення залежностей для українських навчальних курсів
 
