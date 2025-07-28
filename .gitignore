@@ -39,7 +39,3 @@ temp/
 swirl-courses/**/*.yaml
 swirl-courses/**/lesson.yaml
 
-swirl-courses/**/lesson.yaml
-swirl-courses/**/lesson_ai-DISABLED.yaml
-swirl-courses/**/lesson_hu-ACTIVE.yaml
-swirl-courses/**/lesson_hu.yaml
