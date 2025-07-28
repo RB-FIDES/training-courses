@@ -148,9 +148,9 @@ info_fun()
 
 ## ФАЙЛИ СИСТЕМИ
 
-- `ukrainian_phrases.R` - основні функції та фрази
+- `ukrainian_phrases.R` -  фрази українською
 - `full_ukrainian_swirl.R` - переклад інтерфейсу swirl
-- `activate_ukainian.R` - скрипт налаштування  
+- `activate_ukainian.R` - скрипт налаштування, що містить всі функції
 - `ACTIVATION_UKRAINIAN_GUIDE.md` - цей файл інструкцій
 -  `activate_ukrainian_labels.R` - мітки для активації українського інтерфейсу, містить текст для активації та функцій
 
