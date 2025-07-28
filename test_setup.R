@@ -39,18 +39,18 @@ if (files_exist && dirs_exist) {
 
 # Test 2: Check Ukrainian phrases file
 cat("Test 2: Ukrainian phrases... ")
-tryCatch({
+test_results$ukrainian_phrases <- tryCatch({
   source("ukrainian_phrases.R", local = TRUE)
   if (exists("praise_ua", envir = .GlobalEnv) || exists("praise_ua")) {
     cat("✓ PASS\n")
-    test_results$ukrainian_phrases <- TRUE
+    TRUE
   } else {
     cat("✗ FAIL (function not found)\n")
-    test_results$ukrainian_phrases <- FALSE
+    FALSE
   }
 }, error = function(e) {
   cat("✗ FAIL (", e$message, ")\n")
-  test_results$ukrainian_phrases <- FALSE
+  FALSE
 })
 
 # Test 3: Check demo course
