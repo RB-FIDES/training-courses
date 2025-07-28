@@ -4,7 +4,7 @@
 source("activate_ukrainian_labels.R")
 
 al <- function(name, lang = NULL) {
-  lang_code <- if (is.null(lang)) get("lang_code", envir = .GlobalEnv, inherits = FALSE) else lang
+  lang_code <- if (!is.null(lang)) lang else if (exists("lang_code", envir = .GlobalEnv)) get("lang_code", envir = .GlobalEnv) else "uk"
   activate_labels[[lang_code]][[name]]
 }
 
