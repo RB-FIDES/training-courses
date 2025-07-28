@@ -66,6 +66,9 @@ This project uses the [FIDES framework](ai/FIDES.md) for human-AI collaborative 
 3. Follow the Ukrainian activation guide / Дотримуйтесь посібника з активації української версії
 4. Start learning! / Почніть навчання!
 
+## Overview workflow
+If you want to know more about the repository and the files that it contains - check [Files-describer](FILES_DESCRIBER.md)
+
 ## 📄 License / Ліцензія
 
 MIT License - see [LICENSE](LICENSE) file for details
