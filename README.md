@@ -16,16 +16,23 @@ source("activate_ukrainian.R")
 activate()
 ```
 
+If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
+
 ## 📚 Available Courses / Доступні курси
 
 This repository hosts interactive swirl courses with Ukrainian translation support. Each course includes:
 
-Цей репозиторій містить інтерактивні курси swirl з підтримкою українського перекладу. Кожен курс включає:
+Ця репозиторія містить інтерактивні курси swirl з підтримкою українського перекладу. Кожен курс включає:
 
 - English infrastructure code / Англійський код інфраструктури
 - Ukrainian documentation and narration / Українська документація та пояснення
 - Interactive exercises / Інтерактивні вправи
 - Progress tracking / Відстеження прогресу
+- AI-assisted course development / Розробка курсів за допомогою AI
+
+##  📚 Доступні курси українською 📚
+ - R_Programming_ALT ( 1 - 4 уроки)
+ - Demo_Course_Ukrainian (повністю)
 
 ## 🔄 Translation Workflow / Робочий процес перекладу
 
