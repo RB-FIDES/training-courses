@@ -586,7 +586,6 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
     }
   }
   if (is.null(active_yaml)) {
-    # Alternatively, look for -ACTIVE.yaml
     for (f in yaml_files) {
       if (file.exists(file.path(lesson_path, sub("\\.ya?ml$", "-ACTIVE.yaml", f)))) {
         active_yaml <- f; break
