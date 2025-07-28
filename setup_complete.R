@@ -117,7 +117,7 @@ test_ai_framework <- function() {
 # Main setup function
 setup_training_courses <- function() {
   cat("Starting complete setup...\nПочаток повного налаштування...\n")
-  cat("=" * 50, "\n")
+  cat(paste(rep("=", 50), collapse=""), "\n")
   
   results <- list(
     dependencies = check_dependencies(),
