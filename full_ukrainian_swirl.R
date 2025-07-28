@@ -235,7 +235,11 @@ s_ua <- function() {
 
 full_ukrainian_swirl_activate <- function(quiet = .quiet_mode_full) {
   if (!requireNamespace("swirl", quietly = TRUE)) {
-    stop("Пакет swirl не встановлений! / Package swirl is not installed!")
+    if (!quiet) {
+      cat("⚠ Пакет swirl не встановлений. Працюємо в режимі тестування.\n")
+      cat("⚠ Package swirl is not installed. Working in testing mode.\n")
+    }
+    return(invisible(FALSE))
   }
   
   if (!quiet) {

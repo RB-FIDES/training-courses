@@ -11,7 +11,23 @@ if (!"swirl" %in% loadedNamespaces()) {
   if (!.quiet_mode) {
     cat("❌ Пакет swirl не завантажений. Завантажуємо...\n")
   }
-  suppressPackageStartupMessages(library(swirl))
+  
+  # Try to load swirl, but don't fail if it's not available
+  swirl_available <- tryCatch({
+    suppressPackageStartupMessages(library(swirl))
+    TRUE
+  }, error = function(e) {
+    if (!.quiet_mode) {
+      cat("⚠ Пакет swirl недоступний. Функції будуть доступні для тестування.\n")
+      cat("⚠ Swirl package not available. Functions will be available for testing.\n")  
+    }
+    FALSE
+  })
+  
+  # Set a flag to indicate if swirl is available
+  assign(".swirl_available", swirl_available, envir = .GlobalEnv)
+} else {
+  assign(".swirl_available", TRUE, envir = .GlobalEnv)
 }
 
 # Українські фрази похвали
@@ -101,6 +117,17 @@ tryAgain_ua <- function() {
 
 # Функція активації українських фраз
 ukrainian_phrases_activate <- function(quiet = .quiet_mode) {
+  # Check if swirl is available
+  swirl_available <- exists(".swirl_available") && get(".swirl_available", envir = .GlobalEnv)
+  
+  if (!swirl_available) {
+    if (!quiet) {
+      cat("⚠ Пакет swirl недоступний. Українські фрази доступні для тестування.\n")
+      cat("⚠ Swirl package not available. Ukrainian phrases available for testing.\n")
+    }
+    return(invisible(FALSE))
+  }
+  
   if (!"swirl" %in% loadedNamespaces()) {
     if (!quiet) cat("❌ Пакет swirl не завантажений!\n")
     return(invisible(FALSE))
