@@ -33,3 +33,9 @@ temp/
 # Course specific
 /data-private/
 *.rds
+
+# YAML
+swirl-courses/**/*-ACTIVE.yaml
+swirl-courses/**/*-DISABLED.yaml
+
+!swirl-courses/**/lesson.yaml
