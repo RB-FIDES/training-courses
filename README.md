@@ -6,6 +6,7 @@ Interactive courses for learning statistics and data analysis with full Ukrainia
 
 ## 🇺🇦 Quick Start Ukrainian / Швидкий старт українською
 
+Цей спосіб активації рекомендується:
 ```r
 # Install swirl package / Встановити пакет swirl
 install.packages("swirl")
@@ -15,7 +16,10 @@ library(swirl)
 source("activate_ukrainian.R")
 activate()
 ```
-
+Якщо у вас виникає проблеми з активацією, то слід використати наступний спосіб:
+```r
+source("setup_complete.R")
+```
 If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
 
 ## 📚 Available Courses / Доступні курси
