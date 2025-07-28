@@ -4,7 +4,7 @@
 
 ## Що нам для цього потрібно?
 
-- Перенести репозиторію на власний ком'ютер 
+- Перенести репозиторію на власний комп'ютер 
 - Відкрити проєкт 'training-courses.Rproj` в *Rstudio*
 - Встановити пакет **swirl()** (`install.packages("swirl")`)
 - Завантажити курси які бажаєте та помістити їх у `training-courses/swirl_courses/` (наприклад, `swirl_courses/Demo_Course_Ukrainian`)
