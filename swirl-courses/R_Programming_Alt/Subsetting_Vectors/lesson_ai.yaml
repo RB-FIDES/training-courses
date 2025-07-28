@@ -1,0 +1,206 @@
+- Class: meta
+  Course: R Programming
+  Lesson: Підмножини векторів
+  Author: Nick Carchedi (переклав Copilot, валідував людина)
+  Type: Standard
+  Organization: JHU Biostat
+  Version: 2.2.0
+
+- Class: text
+  Output: У цьому уроці ми навчимося витягати елементи з вектора за певними умовами, які ми задаємо.
+
+- Class: text
+  Output: Наприклад, нас можуть цікавити тільки перші 20 елементів вектора, або лише ті, що не дорівнюють NA, або лише позитивні, або ті, що відповідають певній змінній. Після цього уроку ти знатимеш, як діяти у кожній з цих ситуацій.
+
+- Class: cmd_question
+  Output: Я створила для тебе вектор x, що містить випадкову послідовність з 20 чисел (зі стандартного нормального розподілу) і 20 NA. Введи x, щоб подивитися, як він виглядає.
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Введи x, щоб переглянути його вміст.
+
+- Class: text
+  Output: Щоб вибрати окремі елементи (тобто "підмножину") з вектора, треба помістити "індексний вектор" у квадратні дужки одразу після назви вектора.
+
+- Class: cmd_question
+  Output: Для простого прикладу введи x[1:10], щоб побачити перші десять елементів x.
+  CorrectAnswer: x[1:10]
+  AnswerTests: omnitest(correctExpr='x[1:10]')
+  Hint: Переглянь перші десять елементів x через x[1:10].
+
+- Class: text
+  Output: Індексні вектори бувають чотирьох типів: логічні вектори, вектори додатніх цілих чисел, вектори від’ємних цілих чисел і вектори рядків-символів — кожен з них ми розглянемо в цьому уроці.
+
+- Class: text
+  Output: Почнемо з індексації логічними векторами. Часто у справжніх даних хочеться витягти всі елементи вектора, які не є NA (тобто не є пропущеними даними). Нагадаймо, що is.na(x) повертає логічний вектор тієї ж довжини, що і x, з TRUE там, де x має NA, і FALSE там, де x не має NA.
+
+- Class: mult_question
+  Output: Як ти думаєш, що поверне x[is.na(x)]?
+  AnswerChoices: Вектор з усіх NA; Вектор без NA; Вектор з TRUE та FALSE; Вектор довжини 0
+  CorrectAnswer: Вектор з усіх NA
+  AnswerTests: omnitest(correctVal="Вектор з усіх NA")
+  Hint: is.na(x) показує, де вектор має NA. Якщо взяти підмножину x за цим критерієм, що буде?
+
+- Class: cmd_question
+  Output: Перевір це на собі — введи x[is.na(x)].
+  CorrectAnswer: x[is.na(x)]
+  AnswerTests: omnitest(correctExpr='x[is.na(x)]')
+  Hint: Введи x[is.na(x)], щоб переконатися — отримаєш лише NA, що нам не підходить!
+
+- Class: cmd_question
+  Output: Нагадаймо, що `!` — це заперечення логічного виразу, тобто !is.na(x) читається як "не NA". Тому, якщо хочемо створити вектор y з усіх не-NA елементів x, використовуємо y <- x[!is.na(x)]. Спробуй.
+  CorrectAnswer: y <- x[!is.na(x)]
+  AnswerTests: omnitest(correctExpr='y <- x[!is.na(x)]')
+  Hint: Введи y <- x[!is.na(x)], щоб отримати всі непропущені значення з x.
+
+- Class: cmd_question
+  Output: Виведи y у консолі.
+  CorrectAnswer: 'y'
+  AnswerTests: omnitest(correctExpr='y')
+  Hint: Введи y, щоб побачити його вміст.
+
+- Class: text
+  Output: Тепер, коли ми ізолювали не-пропущені значення x і записали їх у y, можемо підмножувати y як завгодно.
+
+- Class: mult_question
+  Output: Нагадаймо, що вираз y > 0 повертає логічний вектор такої ж довжини, як y, з TRUE там, де значення y більше нуля, і FALSE там, де менше або дорівнює нулю. Що поверне y[y > 0]?
+  AnswerChoices: Вектор з усіх додатних елементів y; Вектор з усіх від’ємних елементів y; Вектор з усіх NA; Вектор довжини 0; Вектор з TRUE та FALSE
+  CorrectAnswer: Вектор з усіх додатних елементів y
+  AnswerTests: omnitest(correctVal="Вектор з усіх додатних елементів y")
+  Hint: Логічний вираз y > 0 дає TRUE для кожного додатного елемента y. Який результат буде у y[y > 0]?
+
+- Class: cmd_question
+  Output: Введи y[y > 0], щоб побачити всі додатні елементи y — це також додатні елементи початкового x.
+  CorrectAnswer: y[y > 0]
+  AnswerTests: omnitest(correctExpr='y[y > 0]')
+  Hint: Введи y[y > 0], щоб побачити лише додатні елементи y.
+
+- Class: cmd_question
+  Output: Ти можеш запитати, чому ми не почали з x[x > 0], щоб відразу отримати додатні елементи x. Спробуй це зараз, щоб зрозуміти чому.
+  CorrectAnswer: x[x > 0]
+  AnswerTests: omnitest(correctExpr='x[x > 0]')
+  Hint: Спробуй x[x > 0], щоб зрозуміти, чому цей підхід не спрацює.
+
+- Class: text
+  Output: Оскільки NA — це не значення, а позначка невідомої величини, вираз NA > 0 повертає NA. Тому при такому підході ми отримуємо суміш NA та додатних чисел.
+
+- Class: cmd_question
+  Output: Об’єднавши знання про логічні оператори та підмножини, можна записати x[!is.na(x) & x > 0]. Спробуй.
+  CorrectAnswer: x[!is.na(x) & x > 0]
+  AnswerTests: omnitest(correctExpr='x[!is.na(x) & x > 0]')
+  Hint: Введи x[!is.na(x) & x > 0], щоб побачити результат.
+
+- Class: text
+  Output: Тут ми просимо лиш ті значення x, що одночасно не NA і більше нуля.
+
+- Class: text
+  Output: Я вже показувала, як вибрати перші десять значень x через x[1:10]. Тут ми передаємо у квадратні дужки вектор цілих додатних чисел, що означає: повернути тільки елементи x з номерами 1–10.
+
+- Class: text
+  Output: У багатьох мовах програмування індексація з нуля ("zero-based indexing") — перший елемент має індекс 0. В R — "one-based indexing": перший елемент — це 1.
+
+- Class: cmd_question
+  Output: Чи зможеш ти вибрати 3-й, 5-й і 7-й елементи x? Підказка: скористайся c(), щоб задати номери елементів як числовий вектор.
+  CorrectAnswer: x[c(3, 5, 7)]
+  AnswerTests: omnitest(correctExpr='x[c(3, 5, 7)]')
+  Hint: Створи вектор індексів c(3, 5, 7), а потім помісти його у квадратні дужки.
+
+- Class: cmd_question
+  Output: Важливо, щоб при використанні цілих чисел як індексів для x ми залишались у межах {1, 2, ..., 40}, бо x має лише 40 елементів. Що буде, якщо попросити x[0]? Спробуй.
+  CorrectAnswer: x[0]
+  AnswerTests: omnitest(correctExpr='x[0]')
+  Hint: Введи x[0], щоб побачити, що буде, якщо звернутися до 0-го елемента вектора (який не визначено в R).
+
+- Class: cmd_question
+  Output: Як і очікувалось, нічого корисного не отримаєш. R не забороняє це. А що якщо запитати 3000-й елемент x? Спробуй.
+  CorrectAnswer: x[3000]
+  AnswerTests: omnitest(correctExpr='x[3000]')
+  Hint: Запитай 3000-й елемент x через x[3000].
+
+- Class: text
+  Output: Знову — нічого корисного, але R не заважає запитати. Будь уважна: завжди переконуйся, що твій запит у межах довжини вектора!
+
+- Class: text
+  Output: А якщо нам потрібні всі елементи x, крім 2-го і 10-го? Було б довго вручну виписувати всі номери, крім цих двох.
+
+- Class: cmd_question
+  Output: На щастя, R приймає від’ємні індекси. Якщо x[c(2, 10)] дає лише 2-й і 10-й елементи, то x[c(-2, -10)] — всі крім них. Спробуй x[c(-2, -10)].
+  CorrectAnswer: x[c(-2, -10)]
+  AnswerTests: omnitest(correctExpr='x[c(-2, -10)]')
+  Hint: Введи x[c(-2, -10)].
+
+- Class: cmd_question
+  Output: Скорочено можна записати x[-c(2, 10)]. Спробуй, це те саме.
+  CorrectAnswer: x[-c(2, 10)]
+  AnswerTests: omnitest(correctExpr='x[-c(2, 10)]')
+  Hint: Використай x[-c(2, 10)], це зручно якщо індексів багато.
+
+- Class: text
+  Output: Ми розглянули три типи індексних векторів — логічний, додатні цілі числа, від’ємні цілі числа. Залишився останній тип — "іменовані" елементи.
+
+- Class: cmd_question
+  Output: Створи числовий вектор з трьома іменованими елементами: vect <- c(foo = 11, bar = 2, norf = NA).
+  CorrectAnswer: vect <- c(foo = 11, bar = 2, norf = NA)
+  AnswerTests: omnitest(correctExpr='vect <- c(foo = 11, bar = 2, norf = NA)')
+  Hint: Створи іменований вектор через vect <- c(foo = 11, bar = 2, norf = NA).
+
+- Class: cmd_question
+  Output: Якщо вивести vect у консоль, побачиш, що кожен елемент має ім’я. Перевір.
+  CorrectAnswer: vect
+  AnswerTests: omnitest(correctExpr='vect')
+  Hint: Введи vect, щоб побачити його вміст.
+
+- Class: cmd_question
+  Output: Можна отримати імена vect через names(vect). Спробуй.
+  CorrectAnswer: names(vect)
+  AnswerTests: omnitest(correctExpr='names(vect)')
+  Hint: Подивись, що повертає names(vect).
+
+- Class: cmd_question
+  Output: Альтернативно можна створити звичайний (безіменний) вектор vect2 через c(11, 2, NA). Зроби це.
+  CorrectAnswer: vect2 <- c(11, 2, NA)
+  AnswerTests: omnitest(correctExpr='vect2 <- c(11, 2, NA)')
+  Hint: Створи вектор vect2, що містить c(11, 2, NA).
+
+- Class: cmd_question
+  Output: Тепер можна додати імена до vect2 так: names(vect2) <- c("foo", "bar", "norf"). Спробуй.
+  CorrectAnswer: names(vect2) <- c("foo", "bar", "norf")
+  AnswerTests: omnitest(correctExpr='names(vect2) <- c("foo", "bar", "norf")')
+  Hint: Додай імена до vect2: names(vect2) <- c("foo", "bar", "norf").
+
+- Class: cmd_question
+  Output: Перевірмо, чи однакові vect і vect2, передавши їх у identical().
+  CorrectAnswer: identical(vect, vect2)
+  AnswerTests: any_of_exprs('identical(vect, vect2)', 'identical(vect2, vect)')
+  Hint: identical() показує, чи перші два аргументи однакові.
+
+- Class: text
+  Output: Дійсно, vect і vect2 — це однакові іменовані вектори.
+
+- Class: mult_question
+  Output: Тепер повернемось до підмножини за іменами. Яка з команд вибирає другий елемент vect?
+  AnswerChoices: vect["bar"]; vect[bar]; vect["2"]
+  CorrectAnswer: vect["bar"]
+  AnswerTests: omnitest(correctVal='vect["bar"]')
+  Hint: Якщо хочемо елемент з іменем "bar" (другий у vect), яка команда це зробить?
+
+- Class: cmd_question
+  Output: Спробуй.
+  CorrectAnswer: vect["bar"]
+  AnswerTests: omnitest(correctExpr='vect["bar"]')
+  Hint: Введи vect["bar"].
+
+- Class: cmd_question
+  Output: Аналогічно можна задати вектор імен: vect[c("foo", "bar")]. Спробуй.
+  CorrectAnswer: vect[c("foo", "bar")]
+  AnswerTests: omnitest(correctExpr='vect[c("foo", "bar")]')
+  Hint: Використай vect[c("foo", "bar")], щоб отримати елементи з іменами "foo" та "bar".
+
+- Class: text
+  Output: Тепер ти знаєш усі чотири способи вибору підмножини з векторів. Різні підходи краще працюють у різних ситуаціях, а якщо не впевнена — просто спробуй!
+
+- Class: mult_question
+  Output: Чи хотіла б ти повідомити комусь про успішне завершення цього уроку?
+  CorrectAnswer: NULL
+  AnswerChoices: Так; Ні
+  AnswerTests: notify()
+  Hint: NULL
