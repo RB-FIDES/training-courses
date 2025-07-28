@@ -1,133 +1,153 @@
-# Ukrainian Phrases for Swirl
-# Українські фрази для Swirl
+# УКРАЇНСЬКІ ФРАЗИ ДЛЯ SWIRL
+# UKRAINIAN PHRASES FOR SWIRL
 
-# Ukrainian praise messages
+# Тихий режим - не виводити повідомлення при завантаженні
+.quiet_mode <- tryCatch({
+  exists(".quiet_mode", envir = .GlobalEnv) && get(".quiet_mode", envir = .GlobalEnv)
+}, error = function(e) FALSE)
+
+# Перевірити чи завантажено swirl
+if (!"swirl" %in% loadedNamespaces()) {
+  if (!.quiet_mode) {
+    cat("❌ Пакет swirl не завантажений. Завантажуємо...\n")
+  }
+  suppressPackageStartupMessages(library(swirl))
+}
+
+# Українські фрази похвали
 praise_ua <- function() {
-  phrases <- c(
-    "Чудова робота!",
-    "Відмінно!",
-    "Правильно!",
-    "Ти зрозуміла!",
-    "У тебе дуже добре виходить!",
-    "Продовжуй так само добре!",
-    "Ти впоралася! Молодець!",
-    "Блискуче!",
-    "Саме так!",
-    "Ідеально!",
-    "Ти розумна!",
-    "Фантастично!",
-    "Чудово!",
-    "Дуже добре!"
-  )
+  swirl_is_fun <- getOption("swirl_is_fun")
+  
+  if(is.null(swirl_is_fun) || isTRUE(swirl_is_fun)) {
+    phrases <- c(
+      # Ваші оригінальні фрази
+      "Чудово!",
+      "Відмінно!",
+      "Прекрасна робота!",
+      "Супер!",
+      "Блискуче!",
+      "Так тримати!",
+      "Ви молодець!",
+      "Ідеально!",
+      "Фантастично!",
+      "Вражаюче!",
+      # Додаткові фрази з оригіналу swirl
+      "Ви зрозуміли!",
+      "Гарна робота!",
+      "Продовжуйте в тому ж дусі!",
+      "Ви так добре працюєте!",
+      "Вся ця важка робота окупається!",
+      "Ви впорались! Хороша робота!",
+      "Ви найкращий!",
+      "Ви дивовижні!",
+      "Продовжуй так само добре!",
+      "Ти на правильному шляху!",
+      "Твоя відданість надихає!",
+      "Ти справді молодець, подруго!",
+      "Продовжуйте так працювати і ви досягнете мети!",
+      "Наполегливість - це відповідь.",
+      "Чудова робота!",
+      "Ви дуже добрий мій друже!",
+      "Ваша відданість надихає!",
+      "Ви правильно зрозуміли!",
+      "Це правильно!",
+      "Ви справді на підйомі!",
+      "Відмінна робота!",
+      "Вся ця практика окупається!",
+      "Це добре виконане завдання!",
+      "Це саме та відповідь, яку я шукав."
+    )
+  } else {
+    phrases <- "Правильно!"
+  }
   sample(phrases, 1)
 }
 
-# Ukrainian "try again" messages
+# Українські фрази "спробуй ще раз"
 tryAgain_ua <- function() {
-  phrases <- c(
-    "Майже! Спробуй ще раз.",
-    "Не зовсім! Спробуй ще раз.",
-    "Продовжуй намагатися!",
-    "Дай цьому ще один шанс.",
-    "Ще один раз. Ти можеш це зробити!",
-    "Спробуй інший підхід.",
-    "Не здавайся! Спробуй знову.",
-    "Ти на правильному шляху. Ще раз!",
-    "Майже правильно. Ще одна спроба!",
-    "Це нормально. Спробуй ще раз."
-  )
+  swirl_is_fun <- getOption("swirl_is_fun")
+  
+  if(is.null(swirl_is_fun) || isTRUE(swirl_is_fun)) {
+    phrases <- c(
+      # Ваші оригінальні фрази
+      "Спробуйте ще раз.",
+      "Не зовсім правильно. Спробуйте знову.",
+      "Майже! Спробуйте ще раз.",
+      "Не зовсім так. Давайте ще раз.",
+      "Спробуйте ще раз, будь ласка.",
+      "Не вийшло. Спробуйте знову.",
+      "Ще одна спроба!",
+      "Давайте ще раз!",
+      # Додаткові фрази з оригіналу swirl
+      "Ви майже впорались, але не зовсім. Спробуйте ще раз.",
+      "Дайте ще одну спробу.",
+      "Не зовсім! Спробуйте ще раз.",
+      "Не точно. Спробуйте ще раз.",
+      "Це не зовсім те, що я шукаю. Спробуйте ще раз.",
+      "Гарна спроба, але це не зовсім те, на що я сподівався. Спробуйте ще раз.",
+      "Продовжуйте спробувати!",
+      "Це не та відповідь, яку я шукав, але спробуйте ще раз.",
+      "Не зовсім правильно, але продовжуйте спробувати.",
+      "Ви близько... Я це відчуваю! Спробуйте ще раз.",
+      "Ще раз. Ви можете це зробити!",
+      "Не зовсім, але ви вчитесь! Спробуйте ще раз.",
+      "Спробуйте ще раз. Отримати правильну відповідь з першого разу все одно нудно!"
+    )
+  } else {
+    phrases <- "Неправильно. Будь ласка, спробуйте ще раз."
+  }
   sample(phrases, 1)
 }
 
-# Function to activate Ukrainian phrases
-activate_ukrainian_phrases_only <- function() {
-  cat("Activating Ukrainian phrases only...\n")
-  cat("Активація тільки українських фраз...\n")
+# Функція активації українських фраз
+ukrainian_phrases_activate <- function(quiet = .quiet_mode) {
+  if (!"swirl" %in% loadedNamespaces()) {
+    if (!quiet) cat("❌ Пакет swirl не завантажений!\n")
+    return(invisible(FALSE))
+  }
   
-  # Replace swirl's praise and tryAgain functions
-  if (require(swirl, quietly = TRUE)) {
-    # Override praise function
-    assignInNamespace("praise", function() cat(praise_ua(), "\n"), "swirl")
+  # Замінити функції в namespace swirl
+  tryCatch({
+    unlockBinding("praise", asNamespace("swirl"))
+    assign("praise", praise_ua, envir = asNamespace("swirl"))
+    lockBinding("praise", asNamespace("swirl"))
     
-    # Override tryAgain function  
-    assignInNamespace("tryAgain", function() cat(tryAgain_ua(), "\n"), "swirl")
+    unlockBinding("tryAgain", asNamespace("swirl"))  
+    assign("tryAgain", tryAgain_ua, envir = asNamespace("swirl"))
+    lockBinding("tryAgain", asNamespace("swirl"))
     
-    cat("✓ Ukrainian phrases activated!\n")
-    cat("✓ Українські фрази активовані!\n")
+    if (!quiet) {
+      cat("✓ Українські фрази активовано!\n")
+      cat("✓ Ukrainian phrases activated!\n")
+      cat("  Тепер swirl використовуватиме українські повідомлення прогресу.\n")
+      cat("  Now swirl will use Ukrainian progress messages.\n")
+    }
     
-    return(TRUE)
-  } else {
-    cat("✗ Swirl package not found. Please install swirl first.\n")
-    cat("✗ Пакет swirl не знайдено. Будь ласка, встановіть swirl спочатку.\n")
-    return(FALSE)
+    return(invisible(TRUE))
+  }, error = function(e) {
+    if (!quiet) cat("❌ Помилка активації:", e$message, "\n")
+    return(invisible(FALSE))
+  })
+}
+
+# Функція тестування
+test_ukrainian_phrases <- function() {
+  cat("🧪 Тестування українських фраз:\n")
+  cat("📋 Фрази похвали:\n")
+  for(i in 1:3) {
+    cat("  ✓", praise_ua(), "\n")
+  }
+  cat("📋 Фрази 'спробуй ще раз':\n")
+  for(i in 1:3) {
+    cat("  ↻", tryAgain_ua(), "\n")
   }
 }
 
-# Function to deactivate Ukrainian translation
-deactivate_ukrainian_translation <- function() {
-  cat("Deactivating Ukrainian translation...\n")
-  cat("Деактивація українського перекладу...\n")
-  
-  if (require(swirl, quietly = TRUE)) {
-    # Restore original functions (requires restart in practice)
-    cat("Please restart R to fully restore original swirl functions.\n")
-    cat("Будь ласка, перезапустіть R для повного відновлення оригінальних функцій swirl.\n")
-  }
+if (exists(".quiet_mode") && .quiet_mode) {
+  tryCatch({
+    # Очистити можливі кешовані промпти
+    if (exists(".Last.readline")) rm(.Last.readline, envir = .GlobalEnv)
+  }, error = function(e) {
+    # Ignore
+  })
 }
-
-# Function to check Ukrainian status
-check_ukrainian_status <- function() {
-  cat("Ukrainian translation status:\n")
-  cat("Статус українського перекладу:\n")
-  
-  # Check if swirl is loaded
-  if ("swirl" %in% loadedNamespaces()) {
-    cat("✓ Swirl is loaded\n")
-    cat("✓ Swirl завантажений\n")
-  } else {
-    cat("✗ Swirl is not loaded\n")
-    cat("✗ Swirl не завантажений\n")
-  }
-}
-
-# Quick test function
-quick_test <- function() {
-  cat("Testing Ukrainian phrases...\n")
-  cat("Тестування українських фраз...\n")
-  
-  cat("Sample praise:", praise_ua(), "\n")
-  cat("Sample try again:", tryAgain_ua(), "\n")
-}
-
-# Quick activation function
-quick_activate <- function() {
-  cat("Quick Ukrainian activation...\n")
-  cat("Швидка активація української мови...\n")
-  
-  if (!require(swirl, quietly = TRUE)) {
-    cat("Installing swirl package...\n")
-    install.packages("swirl")
-    library(swirl)
-  }
-  
-  activate_ukrainian_phrases_only()
-}
-
-# Information function
-info_fun <- function() {
-  cat("Available Ukrainian functions:\n")
-  cat("Доступні українські функції:\n")
-  cat("- praise_ua() - Ukrainian praise messages\n")
-  cat("- tryAgain_ua() - Ukrainian try again messages\n") 
-  cat("- activate_ukrainian_phrases_only() - Activate Ukrainian phrases\n")
-  cat("- deactivate_ukrainian_translation() - Deactivate translation\n")
-  cat("- check_ukrainian_status() - Check current status\n")
-  cat("- quick_test() - Test phrase functions\n")
-  cat("- quick_activate() - Quick setup\n")
-  cat("- info_fun() - Show this help\n")
-}
-
-cat("Ukrainian phrases loaded successfully!\n")
-cat("Українські фрази успішно завантажені!\n")
-cat("Run info_fun() to see available functions.\n")
-cat("Виконайте info_fun() щоб побачити доступні функції.\n")
