@@ -547,32 +547,19 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   lesson_path <- file.path(local_courses_dir, course_name, lesson_name)
   if(!dir.exists(lesson_path)) stop(paste0(al("not_found_local"), lesson_path))
   
-  # --- NEW: backup original lesson.yaml as lesson_original.yaml (once) ---
+  # --- backup original lesson.yaml as lesson_original.yaml (once) ---
   lesson_yaml_path <- file.path(lesson_path, "lesson.yaml")
   lesson_original_path <- file.path(lesson_path, "lesson_original.yaml")
-  if (file.exists(lesson_yaml_path) && !file.exists(lesson_original_path)) {
+  if (!file.exists(lesson_original_path) && file.exists(lesson_yaml_path)) {
     file.copy(lesson_yaml_path, lesson_original_path, overwrite = FALSE)
   }
   
-  orig_files <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = TRUE)
-  orig_contents <- lapply(orig_files, function(f) {
-    if (file.exists(f)) readLines(f, warn = FALSE) else character(0)
-  })
-  names(orig_contents) <- basename(orig_files)
-  
-  all_files <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = FALSE)
-  for (f in all_files) {
-    if (grepl("-(ACTIVE|DISABLED)\\.ya?ml$", f)) {
-      orig <- file.path(lesson_path, f)
-      base <- file.path(lesson_path, sub("-(ACTIVE|DISABLED)(\\.ya?ml)$", "\\2", f))
-      if (!file.exists(base)) file.rename(orig, base)
-      else file.remove(orig)
-    }
-  }
-  
-  # --- NEW: Add lesson_original.yaml to yaml_files if it exists ---
+  # Вибираємо тільки ОРИГІНАЛЬНІ (без -ACTIVE/-DISABLED) yaml-файли:
   yaml_files <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = FALSE)
+  yaml_files <- yaml_files[!grepl("-(ACTIVE|DISABLED)\\.ya?ml$", yaml_files)]
   yaml_files <- yaml_files[yaml_files != "lesson.yaml"]
+  
+  # Додаємо lesson_original.yaml до вибору, якщо існує
   if (file.exists(lesson_original_path) && !("lesson_original.yaml" %in% yaml_files)) {
     yaml_files <- c(yaml_files, "lesson_original.yaml")
   }
@@ -587,23 +574,21 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   }
   exit_idx3 <- length(yaml_files) + 1
   
-  active_yaml <- NULL
-  if (file.exists(lesson_yaml_path)) {
-    lesson_yaml_txt <- tryCatch(readLines(lesson_yaml_path, warn = FALSE), error = function(e) NULL)
-    for (f in yaml_files) {
-      yaml_txt <- tryCatch(readLines(file.path(lesson_path, f), warn = FALSE), error = function(e) NULL)
-      if (!is.null(lesson_yaml_txt) && !is.null(yaml_txt) && identical(lesson_yaml_txt, yaml_txt)) {
-        active_yaml <- f; break
+  # Визначення активного yaml
+  get_active_yaml <- function() {
+    if (file.exists(lesson_yaml_path)) {
+      lesson_yaml_txt <- tryCatch(readLines(lesson_yaml_path, warn = FALSE), error = function(e) NULL)
+      actives <- sapply(yaml_files, function(f) {
+        yaml_txt <- tryCatch(readLines(file.path(lesson_path, f), warn = FALSE), error = function(e) NULL)
+        !is.null(lesson_yaml_txt) && !is.null(yaml_txt) && identical(lesson_yaml_txt, yaml_txt)
+      })
+      if (any(actives)) {
+        return(yaml_files[which(actives)[1]])
       }
     }
+    NULL
   }
-  if (is.null(active_yaml)) {
-    for (f in yaml_files) {
-      if (file.exists(file.path(lesson_path, sub("\\.ya?ml$", "-ACTIVE.yaml", f)))) {
-        active_yaml <- f; break
-      }
-    }
-  }
+  active_yaml <- get_active_yaml()
   
   cat(al("pick_yaml"))
   for(i in seq_along(yaml_files)) {
@@ -626,34 +611,61 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   cat(al("confirm_1"))
   confirm <- suppressWarnings(as.integer(readline(al("confirm_choice"))))
   if(is.na(confirm) || confirm == 2) {
-    # Restore to original state
-    for (j in seq_along(orig_files)) {
-      f <- orig_files[j]
-      lines <- orig_contents[[j]]
-      if (file.exists(f)) file.remove(f)
-      if (length(lines) > 0) writeLines(lines, f)
-    }
     cat(al("exit_restore"))
     return(invisible(NULL))
   }
   
   selected_yaml_path <- file.path(lesson_path, selected_yaml)
+  # Перезаписати lesson.yaml вибраним файлом
   file.copy(selected_yaml_path, lesson_yaml_path, overwrite = TRUE)
   
-  active_path <- file.path(lesson_path, sub("\\.ya?ml$", "-ACTIVE.yaml", selected_yaml))
-  file.copy(selected_yaml_path, active_path, overwrite = TRUE)
+  # --- Очищення старих файлів з суфіксами ---
+  suffix_files <- list.files(lesson_path, pattern = "-(ACTIVE|DISABLED)\\.ya?ml$", full.names = TRUE)
+  if(length(suffix_files) > 0) file.remove(suffix_files)
   
+  # --- Копіювання всіх yaml-файлів з приставками ---
   for (f in yaml_files) {
-    if (f != selected_yaml) {
-      from <- file.path(lesson_path, f)
-      to <- file.path(lesson_path, sub("\\.ya?ml$", "-DISABLED.yaml", f))
-      file.copy(from, to, overwrite = TRUE)
-      file.remove(from)
+    src_path <- file.path(lesson_path, f)
+    if (f == selected_yaml) {
+      to_path <- file.path(lesson_path, sub("\\.ya?ml$", "-ACTIVE.yaml", f))
+      file.copy(src_path, to_path, overwrite = TRUE)
+    } else {
+      to_path <- file.path(lesson_path, sub("\\.ya?ml$", "-DISABLED.yaml", f))
+      file.copy(src_path, to_path, overwrite = TRUE)
     }
   }
   
+  # ОЧИЩЕННЯ: НЕ видаляємо жодних yaml, не перейменовуємо, не перетираємо!
+  # Всі оригінальні файли залишаються. lesson.yaml оновлений.
+  
+  # Оновлення активного для повторного меню (якщо потрібно)
+  yaml_files_post <- list.files(lesson_path, pattern = "\\.ya?ml$", full.names = FALSE)
+  yaml_files_post <- yaml_files_post[!grepl("-(ACTIVE|DISABLED)\\.ya?ml$", yaml_files_post)]
+  yaml_files_post <- yaml_files_post[yaml_files_post != "lesson.yaml"]
+  if (file.exists(lesson_original_path) && !("lesson_original.yaml" %in% yaml_files_post)) {
+    yaml_files_post <- c(yaml_files_post, "lesson_original.yaml")
+  }
+  active_yaml_post <- NULL
+  if (file.exists(lesson_yaml_path)) {
+    lesson_yaml_txt <- tryCatch(readLines(lesson_yaml_path, warn = FALSE), error = function(e) NULL)
+    actives <- sapply(yaml_files_post, function(f) {
+      yaml_txt <- tryCatch(readLines(file.path(lesson_path, f), warn = FALSE), error = function(e) NULL)
+      !is.null(lesson_yaml_txt) && !is.null(yaml_txt) && identical(lesson_yaml_txt, yaml_txt)
+    })
+    if (any(actives)) {
+      active_yaml_post <- yaml_files_post[which(actives)[1]]
+    }
+  }
+  
+  cat("\nПоточний активний файл:\n")
+  for(i in seq_along(yaml_files_post)) {
+    marker <- if (!is.null(active_yaml_post) && yaml_files_post[i] == active_yaml_post) "✓ " else "  "
+    cat(sprintf("%d) %s%s\n", i, marker, yaml_files_post[i]))
+  }
+  
+  cat(sprintf("\n"))
   cat(sprintf(al("activated"), selected_yaml))
-  cat(sprintf(al("active_left"), basename(active_path)))
+  cat(sprintf(al("active_left"), paste0(sub("\\.ya?ml$", "-ACTIVE.yaml", selected_yaml))))
   cat(al("others_disabled"))
   
   cat(al("swirl_update"))
@@ -661,16 +673,13 @@ change_lesson_interactive <- function(local_courses_dir = "swirl-courses") {
   update_choice <- suppressWarnings(as.integer(readline(al("swirl_update_choice"))))
   if(!is.na(update_choice) && update_choice == 1) {
     dest_lesson_dir <- file.path(swirl_courses_dir, course_name, lesson_name)
-    # Remove old lesson, if exists
     if (dir.exists(dest_lesson_dir)) {
       unlink(dest_lesson_dir, recursive = TRUE, force = TRUE)
     }
     dir.create(dest_lesson_dir, recursive = TRUE)
-    # Copy all files from lesson_path to swirl (preserve -ACTIVE/-DISABLED)
     success <- file.copy(list.files(lesson_path, full.names = TRUE), dest_lesson_dir, overwrite = TRUE, recursive = TRUE)
     if (all(success)) {
       cat(sprintf(al("swirl_updated"), course_name, lesson_name))
-      # Immediately exit after updating
       return(invisible(TRUE))
     } else {
       cat(al("swirl_copy_warn"))
