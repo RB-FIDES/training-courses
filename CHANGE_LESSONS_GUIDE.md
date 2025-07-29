@@ -82,4 +82,4 @@ After activate the main script (`source("activate_Ukrainian.R")), I run the func
 ```r
 change_lesson_interactive()
 ```
-(change_lessons_guide-1.jpg)
+![change_lessons_guide-1](images/change_lessons_guide-1.jpg)
