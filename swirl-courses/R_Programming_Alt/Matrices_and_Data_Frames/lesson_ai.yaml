@@ -1,0 +1,185 @@
+- Class: meta
+  Course: R_Programming_Alt
+  Lesson: Matrices and Data Frames
+  Author: Nick Carchedi / Переклад: oleksandkov, AI
+  Type: Standard
+  Organization: JHU Biostat
+  Version: 2.2.0-ua
+
+- Class: text
+  Output: У цьому уроці ми розглянемо матриці та дата-фрейми. Обидва ці об’єкти є «прямокутними» структурами даних, тобто використовуються для зберігання табличних даних з рядками та стовпцями.
+
+- Class: text
+  Output: Головна різниця між ними полягає в тому, що матриці можуть містити лише один тип даних, а дата-фрейми — кілька різних типів даних одночасно.
+
+- Class: cmd_question
+  Output: Давайте створимо вектор з чисел від 1 до 20 за допомогою оператора `:`. Збережіть результат у змінній my_vector.
+  CorrectAnswer: my_vector <- 1:20
+  AnswerTests: omnitest(correctExpr='my_vector <- 1:20')
+  Hint: Ви вивчали оператор `:` у попередньому уроці. Щоб створити вектор з чисел 1, 2, 3, можна використати c(1, 2, 3) або 1:3. Тут треба числа від 1 до 20, збережені у змінній my_vector. Функцію c() при використанні `:` не потрібно.
+
+- Class: cmd_question
+  Output: Перегляньте вміст створеного вектора.
+  CorrectAnswer: my_vector
+  AnswerTests: omnitest(correctExpr='my_vector')
+  Hint: Надрукуйте my_vector, щоб побачити його вміст.
+
+- Class: cmd_question
+  Output: Функція dim() показує «розміри» об’єкта. Що буде, якщо виконати dim(my_vector)? Спробуйте.
+  CorrectAnswer: dim(my_vector)
+  AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Hint: Просто введіть dim(my_vector) і подивіться на результат.
+
+- Class: cmd_question
+  Output: Це не надто інформативно! Оскільки my_vector — це вектор, у нього немає атрибута `dim` (тому повертається NULL), але можна дізнатися його довжину за допомогою функції length(). Спробуйте.
+  CorrectAnswer: length(my_vector)
+  AnswerTests: omnitest(correctExpr='length(my_vector)')
+  Hint: Введіть length(my_vector), щоб побачити довжину створеного вектора.
+
+- Class: cmd_question
+  Output: Ось це вже краще. А що буде, якщо задати для my_vector атрибут `dim`? Давайте зробимо це. Введіть dim(my_vector) <- c(4, 5).
+  CorrectAnswer: dim(my_vector) <- c(4, 5)
+  AnswerTests: omnitest(correctExpr='dim(my_vector) <- c(4, 5)')
+  Hint: Введіть dim(my_vector) <- c(4, 5), щоб додати атрибут розмірів.
+
+- Class: text
+  Output: Якщо попередня команда здалася вам дивною — це нормально! Функція dim() дозволяє як отримати, так і встановити атрибут розмірів для об’єкта. Тут ми присвоїли my_vector значення c(4, 5).
+
+- Class: cmd_question
+  Output: Перевірте, чи правильно встановлено атрибут розмірів для my_vector, виконавши dim(my_vector).
+  CorrectAnswer: dim(my_vector)
+  AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Hint: Просто наберіть dim(my_vector), щоб переконатись, що розміри встановлено.
+
+- Class: cmd_question
+  Output: Ще один спосіб це побачити — скористатись функцією attributes() для my_vector. Спробуйте.
+  CorrectAnswer: attributes(my_vector)
+  AnswerTests: omnitest(correctExpr='attributes(my_vector)')
+  Hint: Команда attributes(my_vector) покаже всі атрибути об’єкта my_vector.
+
+- Class: text
+  Output: Як і в математиці, для двовимірних об’єктів (наприклад, таблиці) перше число — це кількість рядків, друге — кількість стовпців. Тобто, ми задали для my_vector 4 рядки і 5 стовпців.
+
+- Class: cmd_question
+  Output: Але це вже схоже не на вектор, правда? Так і є — тепер це матриця. Перегляньте вміст my_vector зараз.
+  CorrectAnswer: my_vector
+  AnswerTests: omnitest(correctExpr='my_vector')
+  Hint: Надрукуйте my_vector, щоб побачити, як він виглядає.
+
+- Class: cmd_question
+  Output: Переконаємось, чи це справді матриця, за допомогою функції class(). Введіть class(my_vector).
+  CorrectAnswer: class(my_vector)
+  AnswerTests: omnitest(correctExpr='class(my_vector)')
+  Hint: Введіть class(my_vector), щоб дізнатися клас my_vector.
+
+- Class: cmd_question
+  Output: Дійсно, my_vector тепер є матрицею. Збережіть його у новій змінній з назвою my_matrix, щоб це було зрозуміліше.
+  CorrectAnswer: my_matrix <- my_vector
+  AnswerTests: omnitest(correctExpr='my_matrix <- my_vector')
+  Hint: Щоб змінити ім’я об’єкта, переприсвойте: my_matrix <- my_vector.
+
+- Class: text
+  Output: Все, що ми розглядали досі, мало показати, що матриця — це просто атомарний вектор з атрибутом розмірів. Простіше створити таку матрицю за допомогою функції matrix().
+
+- Class: cmd_question
+  Output: Ознайомтеся з довідкою до функції matrix() за допомогою ?.
+  CorrectAnswer: ?matrix
+  AnswerTests: omnitest(correctExpr='?matrix')
+  Hint: Команда ?matrix відкриє документацію.
+
+- Class: cmd_question
+  Output: Подивіться документацію до matrix() і спробуйте створити матрицю з тими самими числами (1-20) та розмірами (4 рядки, 5 стовпців) за допомогою matrix(). Збережіть результат у my_matrix2.
+  CorrectAnswer: my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
+  AnswerTests: calculates_same_value('matrix(1:20, nrow=4, ncol=5)'); expr_creates_var('my_matrix2')
+  Hint: Викличте matrix() з трьома аргументами — 1:20, кількість рядків і кількість стовпців. Результат збережіть у my_matrix2 (не у my_matrix).
+
+- Class: cmd_question
+  Output: Перевіримо, чи my_matrix і my_matrix2 ідентичні. Функція identical() підкаже. Спробуйте.
+  CorrectAnswer: identical(my_matrix, my_matrix2)
+  AnswerTests: any_of_exprs('identical(my_matrix, my_matrix2)', 'identical(my_matrix2, my_matrix)')
+  Hint: Якщо не впевнені, відкрийте документацію ?identical.
+
+- Class: text
+  Output: Уявіть, що числа у цій таблиці — це результати вимірювань з клінічного експерименту: кожен рядок — окремий пацієнт, кожен стовпець — певна змінна.
+
+- Class: text
+  Output: Можливо, нам захочеться підписати рядки, щоб знати, які числа належать якому пацієнту. Один зі способів — додати стовпець з іменами.
+
+- Class: cmd_question
+  Output: Створіть вектор з іменами пацієнтів — Bill, Gina, Kelly, Sean. Пам’ятайте: лапки означають текстовий рядок. Збережіть у змінній patients.
+  CorrectAnswer: patients <- c("Bill", "Gina", "Kelly", "Sean")
+  AnswerTests: omnitest(correctExpr='patients <- c("Bill", "Gina", "Kelly", "Sean")')
+  Hint: Великі літери в іменах, правильна послідовність, змінна називається patients.
+
+- Class: cmd_question
+  Output: Тепер скористаємося функцією cbind(), щоб «об’єднати стовпці». Зробіть cbind() з двома аргументами — patients і my_matrix.
+  CorrectAnswer: cbind(patients, my_matrix)
+  AnswerTests: omnitest(correctExpr='cbind(patients, my_matrix)')
+  Hint: Введіть cbind(patients, my_matrix), щоб додати імена до матриці.
+
+- Class: text
+  Output: Щось тут не так! Додавання текстового вектора до числової матриці призвело до того, що всі значення стали текстовими (лапки). Тобто, тепер це матриця рядків, а не чисел.
+
+- Class: text
+  Output: Як ви пам’ятаєте, матриця може містити лише один тип даних. Тому при об’єднанні чисел і тексту R змушений був «привести» все до тексту — це і є лапки.
+
+- Class: text
+  Output: Це називається «неявне приведення» (implicit coercion), бо ми цього не просили — воно сталося автоматично. А чому R не перетворив імена на числа? Подумайте самостійно.
+
+- Class: cmd_question
+  Output: Тож, як додати імена пацієнтів до таблиці, не зіпсувавши числові дані? Спробуйте так: my_data <- data.frame(patients, my_matrix)
+  CorrectAnswer: my_data <- data.frame(patients, my_matrix)
+  AnswerTests: omnitest(correctExpr='my_data <- data.frame(patients, my_matrix)')
+  Hint: Введіть my_data <- data.frame(patients, my_matrix), щоб побачити різницю.
+
+- Class: cmd_question
+  Output: Тепер перегляньте вміст my_data.
+  CorrectAnswer: my_data
+  AnswerTests: omnitest(correctExpr='my_data')
+  Hint: Введіть my_data, щоб побачити результат.
+
+- Class: text
+  Output: Як бачимо, функція data.frame() дозволила нам зберігати текстовий вектор з іменами разом із числовою матрицею. Саме це нам і було потрібно!
+
+- Class: text
+  Output: Функція data.frame() може приймати будь-яку кількість аргументів і повертає об’єкт класу `data.frame`, який містить усі передані об’єкти.
+
+- Class: cmd_question
+  Output: Перевіримо це за допомогою функції class() для створеного дата-фрейму.
+  CorrectAnswer: class(my_data)
+  AnswerTests: omnitest(correctExpr='class(my_data)')
+  Hint: Функція class приймає один аргумент — об’єкт, для якого ви хочете дізнатися клас.
+
+- Class: text
+  Output: Можна також задати імена для рядків і стовпців дата-фрейму, щоб знати, які змінні і яким пацієнтам належать.
+
+- Class: text
+  Output: Але оскільки з ідентифікацією пацієнтів ми вже впоралися, давайте підпишемо стовпці, щоб знати, яку змінну містить кожен стовпець.
+
+- Class: cmd_question
+  Output: Оскільки у нас шість стовпців (разом із іменами), потрібно створити вектор з шести назв (у такому порядку): "patient", "age", "weight", "bp", "rating", "test". Назвіть його cnames.
+  CorrectAnswer: cnames <- c("patient", "age", "weight", "bp", "rating", "test")
+  AnswerTests: omnitest(correctExpr='cnames <- c("patient", "age", "weight", "bp", "rating", "test")')
+  Hint: Усі імена — маленькими літерами, у лапках, через кому, з використанням c().
+
+- Class: cmd_question
+  Output: Тепер задайте імена стовпців для дата-фрейму за допомогою colnames(). Як і з dim(), це змінює атрибут об’єкта.
+  CorrectAnswer: colnames(my_data) <- cnames
+  AnswerTests: omnitest(correctExpr='colnames(my_data) <- cnames')
+  Hint: Використайте colnames(my_data) <- cnames.
+
+- Class: cmd_question
+  Output: Переконаємося, що все вийшло — надрукуйте my_data.
+  CorrectAnswer: my_data
+  AnswerTests: omnitest(correctExpr='my_data')
+  Hint: Виведіть на екран my_data.
+
+- Class: text
+  Output: У цьому уроці ви вивчили основи роботи з двома дуже важливими і поширеними структурами даних — матрицями та дата-фреймами. Попереду ще багато цікавого, особливо про дата-фрейми, у наступних уроках.
+
+- Class: mult_question
+  Output: Бажаєте повідомити когось про успішне завершення цього уроку?
+  CorrectAnswer: NULL
+  AnswerChoices: Так; Ні
+  AnswerTests: notify()
+  Hint: NULL
