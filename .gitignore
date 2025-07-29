@@ -35,7 +35,8 @@ temp/
 *.rds
 
 # YAML
-*.yaml
-swirl-courses/**/*.yaml
+swirl-courses/**/*-DISABLED.yaml
+swirl-courses/**/*-ACTIVE.yaml
+swirl-courses/**/*_original.yaml
 swirl-courses/**/lesson.yaml
 
