@@ -171,7 +171,7 @@ info_fun()
 - `FILES_DESCRIBER.md` - опис файлів у репозиторії
 
 # ДЛЯ ПЕРЕКЛАДАЧІВ
-- ознайомитися з [ГАЙД ДЛЯ ПЕРЕКЛАДАЧІВ](TRANLATION_GUIDE.md)
+- ознайомитися з [ГАЙД ДЛЯ ПЕРЕКЛАДАЧІВ](TRANSLATION_GUIDE.md)
 - ознайомтеся з [ГАЙД ПО `change_lessons_interactive()`](CHANGE_LESSONS_GUIDE.md)
 
 ## Сумісність:
