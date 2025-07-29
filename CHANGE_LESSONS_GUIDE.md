@@ -22,7 +22,8 @@ It prompts you to select a course and then a specific lesson within that course.
 #### Why it is useful?
 
 - allows to you to change the current `lesson.yaml` file interactively
-- you won't need to manually edit the YAML files\
+- you won't need to manually edit the YAML files
+- it is useful for translators, developers, manual users
 
 ### Why you might need to change the lesson?
 
