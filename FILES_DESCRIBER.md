@@ -98,4 +98,9 @@
  - used as a container for translation instructions 
  - can be useful for translators (English only)
  
+#### - `TRANSLATION_GUIDE_UA.md`: Contains guide fortranslation
+ - used to provide instructions for  translation
+ - used as a container for translation instructions 
+ - can be useful for translators (ENGLISH AND UKRAINIAN)
+ 
 #### - `PROJECT_ORGANIZATION.md` : Describes the infrustructre of project (ENGLISH ONLY)
