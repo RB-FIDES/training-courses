@@ -171,8 +171,8 @@ info_fun()
 - `FILES_DESCRIBER.md` - опис файлів у репозиторії
 
 # ДЛЯ ПЕРЕКЛАДАЧІВ
-- ознайомитися з (TRANLATION_GUIDE.md)[ГАЙД ДЛЯ ПЕРЕКЛАДАЧІВ)
-- ознайомитися з (CHANGE_LESSONS_GUIDE.md)[ГАЙД ПО ВИКОРИСТАННЮ ФУНКЦІЇ "change_lessons_interactive()"]
+- ознайомитися з (TRANLATION_GUIDE.md)[ГАЙД ДЛЯ ПЕРЕКЛАДАЧІВ]
+- ознайомитися з (ГАЙД ПО ВИКОРИСТАННЮ ФУНКЦІЇ "change_lessons_interactive()")[CHANGE_LESSONS_GUIDE.md]
 
 ## Сумісність:
 - Протестовано з swirl версії 2.4+
