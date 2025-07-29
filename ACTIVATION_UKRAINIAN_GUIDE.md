@@ -172,7 +172,7 @@ info_fun()
 
 # ДЛЯ ПЕРЕКЛАДАЧІВ
 - ознайомитися з [ГАЙД ДЛЯ ПЕРЕКЛАДАЧІВ](TRANLATION_GUIDE.md)
-- ознайомтеся з [гайдом щодо використання функції `change_lessons_interactive()`](CHANGE_LESSONS_GUIDE.md)
+- ознайомтеся з [ГАЙД ПО `change_lessons_interactive()`](CHANGE_LESSONS_GUIDE.md)
 
 ## Сумісність:
 - Протестовано з swirl версії 2.4+
