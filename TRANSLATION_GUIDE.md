@@ -18,6 +18,9 @@ If you want to translate specific lesson, you can do the copy of this file, chan
 ```r
 # change the name of you .yaml file to "lesson.yaml"
 ```
+```r
+# save the original lesson as `lesson_original.yaml`
+```
 
 ```
 update_course_interactive() #update the file 
@@ -59,6 +62,10 @@ If you want to know how to activate the script check the [ACTIVATION_UKRAINIAN_G
 
 ```r
 # змініть назву вашого .yaml файлу на "lesson.yaml"
+```
+
+```r
+# збережи оригінальну версію уроку як `lesson_original.yaml`
 ```
 
 ```
