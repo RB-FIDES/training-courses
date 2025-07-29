@@ -38,3 +38,45 @@ As a alternative way to do a translation you can create a new course with the sa
 If you want to know more about this repository and the rest of the files please check [FILES_DESCRIBER.md](FILES_DESCRIBER.md). **- ENGLISH ONLY**
 
 If you want to know how to activate the script check the [ACTIVATION_UKRAINIAN_GUIDE.md](ACTIVATION_UKRAINIAN_GUIDE.md). **- UKRAINIAN ONLY**
+
+
+# ЦЕЙ `.md` ФАЙЛ Є ПОСІБНИКОМ ДЛЯ РОЗРОБНИКІВ ТА ПЕРЕКЛАДАЧІВ
+
+## Якщо ви хочете перекласти swirl-курси українською, є кілька способів це зробити:
+
+### 1. Змінити `lesson.yaml` вручну
+
+Якщо ви бажаєте перекласти конкретний урок, зробіть копію цього файлу, внесіть зміни згідно з вашим перекладом і перейменуйте перекладений файл у `lesson.yaml`. Після цього потрібно закомітити зміни та оновити курс.
+
+**Покроково:**
+```r
+# Повна активація
+```
+
+```r
+# зробіть нову версію lesson.yaml 
+```
+
+```r
+# змініть назву вашого .yaml файлу на "lesson.yaml"
+```
+
+```
+update_course_interactive() #оновіть файл
+```
+
+### 2. Використати функцію `change_lessons-interactive()`
+
+Щоб краще ознайомитися з використанням цієї функції, перегляньте файл `CHANGE_LESSONS_GUIDE.md`. Потім поверніться до цього `.md`.
+
+### 3. Створити новий курс
+
+Як альтернативний спосіб перекладу ви можете створити новий курс з тією ж назвою, що й оригінальний, але з суфіксом. Наприклад, якщо ви хочете перекласти курс `R_Programming`, створіть новий курс з назвою `R_Programming_UA`. Після цього потрібно закомітити зміни та оновити курс.
+
+***P.s:*** цей спосіб може бути простішим за попередні, але потребує більше часу.
+
+### ІНФОРМАЦІЯ ДЛЯ РОЗРОБНИКІВ ТА ПЕРЕКЛАДАЧІВ
+
+Якщо ви хочете дізнатися більше про цей репозиторій та інші файли, перегляньте [FILES_DESCRIBER.md](FILES_DESCRIBER.md). **- ТІЛЬКИ АНГЛІЙСЬКОЮ**
+
+Якщо ви хочете дізнатися, як активувати скрипт, перегляньте [ACTIVATION_UKRAINIAN_GUIDE.md](ACTIVATION_UKRAINIAN_GUIDE.md). **- ТІЛЬКИ УКРАЇНСЬКОЮ**
