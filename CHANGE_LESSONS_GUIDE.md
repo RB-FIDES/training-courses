@@ -1,5 +1,7 @@
 # This `.md` file created to help you understand how to change versions of `.yaml.` files in the lessons
 
+# This `.md` file created to help you understand how to change versions of `.yaml.` files in the lessons
+
 ## THIS IS TUTORIAL OF USAGE `change_lesson_interactive()` FUNCTION
 
 ### How to activate `change_lessson_interactive()` function?
@@ -78,8 +80,25 @@ In addition, you noticed that you have such files:
 
 I would like to change the language in "R_Programming_ALT" course in the lesson "Basic_Building_Blocks" from Ukrainian to English.
 
+![change_lessons_guide-1](images/change_lessons_guide-1.jpg)
+
+
+For example, I downloaded the French and English versions of this lesson.
+
+
 After activate the main script (`source("activate_Ukrainian.R")), I run the function:
 ```r
 change_lesson_interactive()
 ```
-![change_lessons_guide-1](images/change_lessons_guide-1.jpg)
+
+I choose what version I want to use and after that I update the course.
+
+My directory will look like this: 
+
+![change_lessons_guide-2](images/change_lessons_guide-2.jpg)
+
+**NOTE:** after using the `change_lesson_interactive()` function, you will have several versions of the lesson's YAML file. You can switch between them by running the function again and selecting the desired version. Prefixes `-ACTIVE` and `-DISABLED` will help you identify the currently active lesson version and the disabled versions, respectively.
+
+### Additional Notes
+- if you didn`t run the `activate_ukrainian.R` script, you will get an error message saying that the function is not found.
+- if you did't use the function with lesson, you won't see any files with prefixes 
