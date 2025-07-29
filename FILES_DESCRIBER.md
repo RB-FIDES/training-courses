@@ -86,6 +86,11 @@
  - used to provide instructions for Ukrainian translation
  - used as a container for translation instructions 
  - can be useful for translators (Ukrainian only)
+
+#### -  `CHANGE_LESSONS_GUIDE.md` : Contains guide for `change_lessons_interactive()` function
+ - used to provide instructions how to use function
+ - describe what function do
+ - can be useful for all users (ENGLISH ONLY)
  
 #### - `TRANSLATION_GUIDE.md`: Contains guide for English translation
 - contains guide for English translation
