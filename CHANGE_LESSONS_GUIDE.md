@@ -101,5 +101,5 @@ My directory will look like this:
 **NOTE:** after using the `change_lesson_interactive()` function, you will have several versions of the lesson's YAML file. You can switch between them by running the function again and selecting the desired version. Prefixes `-ACTIVE` and `-DISABLED` will help you identify the currently active lesson version and the disabled versions, respectively.
 
 ### Additional Notes
-- if you didn`t run the `activate_ukrainian.R` script, you will get an error message saying that the function is not found.
-- if you did't use the function with lesson, you won't see any files with prefixes 
+- if you didn't run the `activate_ukrainian.R` script, you will get an error message saying that the function is not found.
+- If you haven’t used the function with the lesson, you will not see any files with the prefixes. 
