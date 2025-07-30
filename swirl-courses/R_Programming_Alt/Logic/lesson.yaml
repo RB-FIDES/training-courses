@@ -1,348 +1,275 @@
 - Class: meta
-  Course: R Programming
+  Course: R Programming_Alt
   Lesson: Logic
-  Author: Sean Kross
+  Author: Sean Kross -  переклад (oleksandkov | AI)
   Type: Standard
   Organization: swirlstats
   Version: 2.2.15
 
 - Class: text
-  Output: This lesson is meant to be a short introduction to logical operations in R.
+  Output: Цей урок є коротким вступом до логічних операцій в R.
 
 - Class: text
-  Output: There are two logical values in R, also called boolean values. They are TRUE and FALSE. 
-    In R you can construct logical expressions which will evaluate to either TRUE or FALSE.
+  Output: В R існує два логічних значення, які також називають булевими значеннями. Це TRUE (ІСТИНА) та FALSE (ХИБА).
+    В R можна створювати логічні вирази, які будуть оцінюватися як TRUE або FALSE.
 
 - Class: text
-  Output: "Many of the questions in this lesson will involve evaluating logical 
-  expressions. It may be useful to open up a second R terminal where you can 
-  experiment with some of these expressions."
+  Output: "Багато завдань у цьому уроці будуть пов'язані з обчисленням логічних виразів.
+  Можливо, буде корисно відкрити другий термінал R, щоб експериментувати з цими виразами."
 
 - Class: cmd_question
-  Output: Creating logical expressions requires logical operators. You're probably familiar with 
-    arithmetic operators like `+`, `-`, `*`, and `/`. The first logical operator we are going to 
-    discuss is the equality operator, represented by two equals signs `==`. Use the equality operator
-    below to find out if TRUE is equal to TRUE.
+  Output: Для створення логічних виразів потрібні логічні оператори. Ймовірно, ви вже знайомі з арифметичними операторами `+`, `-`, `*` та `/`. Перший логічний оператор, який ми розглянемо — оператор рівності, який позначається двома знаками рівності `==`. Використайте оператор рівності, щоб дізнатись, чи TRUE дорівнює TRUE.
   CorrectAnswer: TRUE == TRUE
   AnswerTests: omnitest(correctExpr='TRUE == TRUE')
-  Hint: Use the equality operator and type TRUE == TRUE
+  Hint: Використайте оператор рівності і введіть TRUE == TRUE
 
 - Class: text
-  Output: Just like arithmetic, logical expressions can be grouped by parenthesis so that the entire expression
-   (TRUE == TRUE) == TRUE evaluates to TRUE. 
+  Output: Так само, як і з арифметикою, логічні вирази можна групувати дужками, тому весь вираз (TRUE == TRUE) == TRUE буде TRUE.
 
 - Class: cmd_question
-  Output: To test out this property, try evaluating (FALSE == TRUE) == FALSE .
+  Output: Щоб перевірити цю властивість, спробуйте обчислити (FALSE == TRUE) == FALSE .
   CorrectAnswer: (FALSE == TRUE) == FALSE
   AnswerTests: omnitest(correctExpr='(FALSE == TRUE) == FALSE')
-  Hint: "Try typing: (FALSE == TRUE) == FALSE"
+  Hint: "Спробуйте написати: (FALSE == TRUE) == FALSE"
 
 - Class: cmd_question
-  Output: The equality operator can also be used to compare numbers. Use `==` to see if 6 is equal to 7.
+  Output: Оператор рівності також можна використовувати для порівняння чисел. Використайте `==`, щоб перевірити, чи 6 дорівнює 7.
   CorrectAnswer: 6 == 7
   AnswerTests: omnitest(correctExpr='6 == 7')
-  Hint: Use the equality operator and type 6 == 7
+  Hint: Використайте оператор рівності та напишіть 6 == 7
 
 - Class: text
-  Output: The previous expression evaluates to FALSE because 6 is less than 7. Thankfully, there
-    are inequality operators that allow us to test if a value is less than or greater than another value.
+  Output: Попередній вираз дорівнює FALSE, бо 6 менше за 7. На щастя, існують оператори нерівності, які дозволяють перевірити, чи є значення меншим або більшим за інше.
 
 - Class: cmd_question
-  Output: The less than operator `<` tests whether the number on the left side of the operator 
-    (called the left operand) is less than the number on the right side of the operator (called the
-    right operand). Write an expression to test whether 6 is less than 7.
+  Output: Оператор "менше" `<` перевіряє, чи число ліворуч від оператора (лівий операнд) менше за число праворуч (правий операнд). Напишіть вираз, щоб перевірити, чи 6 менше за 7.
   CorrectAnswer: 6 < 7
   AnswerTests: omnitest(correctExpr='6 < 7')
-  Hint: Use the less than operator and type 6 < 7
+  Hint: Використайте оператор "менше" та введіть 6 < 7
 
 - Class: cmd_question
-  Output: There is also a less-than-or-equal-to operator `<=` which tests whether the left operand 
-    is less than or equal to the right operand. Write an expression to test whether 10 is less than or equal to 10.
+  Output: Є також оператор "менше або дорівнює" `<=`, який перевіряє, чи лівий операнд менший або дорівнює правому. Напишіть вираз, щоб перевірити, чи 10 менше або дорівнює 10.
   CorrectAnswer: 10 <= 10
   AnswerTests: omnitest(correctExpr='10 <= 10')
-  Hint: Use the `<=` operator and type 10 <= 10
+  Hint: Використайте оператор `<=` та введіть 10 <= 10
 
 - Class: text
-  Output: Keep in mind that there are the corresponding greater than `>` and greater-than-or-equal-to
-    `>=` operators.
+  Output: Пам'ятайте, що є також відповідні оператори "більше" `>` та "більше або дорівнює" `>=`.
 
 - Class: mult_question
-  Output: 'Which of the following evaluates to FALSE?'
+  Output: 'Який з наступних виразів дорівнює FALSE?'
   CorrectAnswer: 9 >= 10
-  AnswerChoices: 9 >= 10; 7 == 7; 6 < 8; 0 > -36 
+  AnswerChoices: 9 >= 10; 7 == 7; 6 < 8; 0 > -36
   AnswerTests: omnitest(correctVal='9 >= 10')
-  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
+  Hint: 'За потреби обчисліть кожен вираз окремо в іншій R-сесії, щоб знайти правильну відповідь.'
 
 - Class: mult_question
-  Output: 'Which of the following evaluates to TRUE?'
-  CorrectAnswer: 9 >= 10
-  AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7 
+  Output: 'Який з наступних виразів дорівнює TRUE?'
+  CorrectAnswer: -6 > -7
+  AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7
   AnswerTests: omnitest(correctVal='-6 > -7')
-  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
+  Hint: 'За потреби обчисліть кожен вираз окремо в іншій R-сесії, щоб знайти правильну відповідь.'
 
 - Class: cmd_question
-  Output: The next operator we will discuss is the 'not equals' operator represented by `!=`. Not equals tests whether two
-    values are unequal, so TRUE != FALSE evaluates to TRUE. Like the equality operator, `!=` can also
-    be used with numbers. Try writing an expression to see if 5 is not equal to 7.
+  Output: Наступний оператор, який розглянемо — оператор "не дорівнює", що позначається як `!=`. Він перевіряє, чи два значення не рівні, тобто TRUE != FALSE дає TRUE. Як і оператор рівності, `!=` можна використовувати з числами. Спробуйте написати вираз, щоб перевірити, чи 5 не дорівнює 7.
   CorrectAnswer: 5 != 7
   AnswerTests: omnitest(correctExpr='5 != 7')
-  Hint: Use the not equals operator and type 5 != 7
+  Hint: Використайте оператор "не дорівнює" і введіть 5 != 7
 
 - Class: cmd_question
-  Output: "In order to negate boolean expressions you can use the NOT operator. An exclamation point `!` will cause
-    !TRUE (say: not true) to evaluate to FALSE and !FALSE (say: not false) to evaluate to TRUE. Try using the NOT
-    operator and the equals operator to find the opposite of whether 5 is equal to 7."
+  Output: "Щоб заперечувати булеві вирази, використовуйте оператор NOT. Знак оклику `!` перетворить !TRUE (читається: не істина) у FALSE, а !FALSE (не хиба) у TRUE. Спробуйте використати NOT та оператор рівності, щоб знайти протилежне до 5 == 7."
   CorrectAnswer: '!5 == 7'
   AnswerTests: any_of_exprs('!5 == 7', '!(5 == 7)')
-  Hint: This expression may be a little tricky, so think about negating the expression 5 == 7 (all you need is an exclamation
-    point in front).
+  Hint: Цей вираз може бути трохи складним, тому подумайте, як заперечити вираз 5 == 7 (вам лише потрібно поставити знак оклику попереду).
 
 - Class: text
-  Output: Let's take a moment to review. The equals operator `==` tests whether two boolean values or numbers are equal,
-    the not equals operator `!=` tests whether two boolean values or numbers are unequal, and the NOT operator `!` negates
-    logical expressions so that TRUE expressions become FALSE and FALSE expressions become TRUE.
+  Output: Підсумуємо. Оператор рівності `==` перевіряє, чи два булевих значення або числа рівні, оператор "не дорівнює" `!=` перевіряє, чи вони не рівні, а оператор NOT `!` заперечує логічний вираз: TRUE стає FALSE, а FALSE — TRUE.
 
 - Class: mult_question
-  Output: Which of the following evaluates to FALSE?
+  Output: Який з наступних виразів дорівнює FALSE?
   CorrectAnswer: "!(0 >= -1)"
   AnswerChoices: "!(0 >= -1); !FALSE; 7 != 8; 9 < 10"
   AnswerTests: omnitest(correctVal='!(0 >= -1)')
-  Hint: 'If you need to, you can evaluate each expression in a separate R session to find the correct answer.'
+  Hint: 'За потреби обчисліть кожен вираз окремо в іншій R-сесії, щоб знайти правильну відповідь.'
 
 - Class: mult_question
-  Output: 'What do you think the following expression will evaluate to?: (TRUE != FALSE) == !(6 == 7)'
+  Output: 'Як ви думаєте, чому дорівнює цей вираз?: (TRUE != FALSE) == !(6 == 7)'
   CorrectAnswer: TRUE
-  AnswerChoices: TRUE; FALSE; Can there be objective truth when programming?; %>%
+  AnswerChoices: TRUE; FALSE; Чи може існувати об'єктивна істина в програмуванні?; %>%
   AnswerTests: omnitest(correctVal='TRUE')
-  Hint: 'Try to evaluate each expression in isolation and build up an answer.'
+  Hint: 'Спробуйте обчислити кожну частину окремо, а потім зібрати відповідь.'
 
 - Class: text
-  Output: At some point you may need to examine relationships between multiple logical expressions. 
-    This is where the AND operator and the OR operator come in.
+  Output: Іноді потрібно перевірити взаємозв'язок між кількома логічними виразами. Для цього існують оператор AND (та) і OR (або).
 
 - Class: cmd_question
-  Output: Let's look at how the AND operator works. There are two AND operators in R, `&` and `&&`.
-    Both operators work similarly, if the right and left operands of AND are both TRUE the entire
-    expression is TRUE, otherwise it is FALSE. For example, TRUE & TRUE evaluates to TRUE. Try typing 
-    FALSE & FALSE to how it is evaluated.
+  Output: Давайте розглянемо, як працює оператор AND. В R існує два оператори AND: `&` та `&&`. Обидва працюють схоже — якщо обидва операнди AND дорівнюють TRUE, то весь вираз TRUE, інакше — FALSE. Наприклад, TRUE & TRUE дорівнює TRUE. Спробуйте набрати FALSE & FALSE і подивіться на результат.
   CorrectAnswer: FALSE & FALSE
   AnswerTests: omnitest(correctExpr='FALSE & FALSE')
-  Hint: "Just to illustrate how the AND operator works type: FALSE & FALSE"
+  Hint: "Щоб показати, як працює оператор AND, напишіть: FALSE & FALSE"
 
 - Class: cmd_question
-  Output: "You can use the `&` operator to evaluate AND across a vector. The `&&` version of AND only evaluates 
-    the first member of a vector. Let's test both for practice. Type the expression TRUE & c(TRUE, FALSE, FALSE)."
+  Output: "Ви можете використовувати оператор `&` для поелементного застосування AND до вектора. Версія AND із двома знаками (`&&`) перевіряє лише перший елемент вектора. Давайте протестуємо обидва варіанти. Введіть вираз TRUE & c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE & c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE & c(TRUE, FALSE, FALSE)')
-  Hint: "Now to see how the AND operator works with a vector, type: 
-    TRUE & c(TRUE, FALSE, FALSE)"
+  Hint: "Щоб побачити, як AND працює з вектором, введіть: TRUE & c(TRUE, FALSE, FALSE)"
 
 - Class: text
-  Output: What happens in this case is that the left operand `TRUE` is recycled
-    across every element in the vector of the left operand. This is the equivalent
-    statement as c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE). 
+  Output: В цьому випадку лівий операнд `TRUE` буде "розтягнутий" на кожен елемент вектора. Це еквівалентно c(TRUE, TRUE, TRUE) & c(TRUE, FALSE, FALSE).
 
 - Class: cmd_question
-  Output: "Now we'll type the same expression except we'll use the `&&` operator. Type the expression TRUE && c(TRUE, FALSE, FALSE)."
+  Output: "Тепер наберемо той самий вираз, але використаємо оператор `&&`. Введіть: TRUE && c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE && c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
-  Hint: "As you'll see, the && version of AND works differently. Type: 
-    TRUE && c(TRUE, FALSE, FALSE)"
+  Hint: "Як побачите, версія && працює по-іншому. Введіть: TRUE && c(TRUE, FALSE, FALSE)"
 
 - Class: text
-  Output: "In this case, the left operand is only evaluated with the first member
-    of the right operand (the vector). The rest of the elements in the vector
-    aren't evaluated at all in this expression."
-    
-- Class : text
-  Output: The OR operator follows a similar set of rules. The `|` version of OR
-    evaluates OR across an entire vector, while the `||` version of OR only evaluates
-    the first member of a vector.
-    
-- Class : text
-  Output: An expression using the OR operator will evaluate to TRUE if the left 
-    operand or the right operand is TRUE. If both are TRUE, the expression will
-    evaluate to TRUE, however if neither are TRUE, then the expression will be
-    FALSE.
-    
+  Output: "У цьому випадку лівий операнд порівнюється лише з першим елементом вектора. Інші елементи вектора у цьому виразі не розглядаються."
+
+- Class: text
+  Output: Оператор OR працює за схожими правилами. Версія OR `|` застосовується поелементно до вектора, а версія `||` перевіряє лише перший елемент вектора.
+
+- Class: text
+  Output: Вираз з оператором OR буде TRUE, якщо хоча б один із операндів дорівнює TRUE. Якщо обидва — TRUE, то результат буде TRUE, а якщо жоден — тоді FALSE.
+
 - Class: cmd_question
-  Output: "Let's test out the vectorized version of the OR operator. Type the 
-    expression TRUE | c(TRUE, FALSE, FALSE)."
+  Output: "Давайте перевіримо, як працює поелементна версія оператора OR. Введіть вираз TRUE | c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE | c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE | c(TRUE, FALSE, FALSE)')
-  Hint: "Test out the vectorized OR operator by typing: TRUE | c(TRUE, FALSE, FALSE)"
-  
+  Hint: "Спробуйте поелементний OR, написавши: TRUE | c(TRUE, FALSE, FALSE)"
+
 - Class: cmd_question
-  Output: "Now let's try out the non-vectorized version of the OR operator. Type the 
-    expression TRUE || c(TRUE, FALSE, FALSE)."
+  Output: "Тепер спробуємо не векторизовану версію OR. Введіть: TRUE || c(TRUE, FALSE, FALSE)."
   CorrectAnswer: "TRUE || c(TRUE, FALSE, FALSE)"
   AnswerTests: omnitest(correctExpr='TRUE || c(TRUE, FALSE, FALSE)')
-  Hint: "As you'll see the || version of OR is not vectorized. Type: 
-    TRUE || c(TRUE, FALSE, FALSE)"
-  
-- Class : text
-  Output: "Logical operators can be chained together just like arithmetic operators.
-    The expressions: `6 != 10 && FALSE && 1 >= 2` or `TRUE || 5 < 9.3 
-    || FALSE` are perfectly normal to see."
-  
-- Class : cmd_question
-  Output: "As you may recall, arithmetic has an order of operations and so do logical
-    expressions. All AND operators are evaluated before OR operators. Let's look at
-    an example of an ambiguous case. Type: 5 > 8 || 6 != 8 && 4 > 3.9"
+  Hint: "Як побачите, версія || не є векторизованою. Напишіть: TRUE || c(TRUE, FALSE, FALSE)"
+
+- Class: text
+  Output: "Логічні оператори можна поєднувати так само, як і арифметичні. Вирази на кшталт `6 != 10 && FALSE && 1 >= 2` або `TRUE || 5 < 9.3 || FALSE` цілком звичні."
+
+- Class: cmd_question
+  Output: "Як і арифметика, логічні вирази мають порядок обчислення. Оператори AND виконуються першими, а потім OR. Розглянемо приклад з неоднозначністю. Введіть: 5 > 8 || 6 != 8 && 4 > 3.9"
   CorrectAnswer: "5 > 8 || 6 != 8 && 4 > 3.9"
   AnswerTests: omnitest(correctExpr='5 > 8 || 6 != 8 && 4 > 3.9')
-  Hint: "See how the order of operations works by typing: 
-    5 > 8 || 6 != 8 && 4 > 3.9"
-  
-- Class : text
-  Output: "Let's walk through the order of operations in the above case. First the
-    left and right operands of the AND operator are evaluated. 6 is not equal 8, 
-    4 is greater than 3.9, therefore both operands are TRUE so the resulting expression 
-    `TRUE && TRUE` evaluates to TRUE. Then the left operand of the OR operator is 
-    evaluated: 5 is not greater than 8 so the entire expression is reduced to FALSE
-    || TRUE. Since the right operand of this expression is TRUE the entire expression
-    evaluates to TRUE."
-    
+  Hint: "Перевірте порядок операцій, ввівши: 5 > 8 || 6 != 8 && 4 > 3.9"
+
+- Class: text
+  Output: "Проаналізуймо порядок операцій: спершу обчислюються операнди AND — 6 не дорівнює 8, 4 більше за 3.9, обидва — TRUE, тож TRUE && TRUE дає TRUE. Потім обчислюється лівий операнд OR: 5 не більше за 8, тобто FALSE. Тепер весь вираз зводиться до FALSE || TRUE, а це TRUE."
+
 - Class: mult_question
-  Output: Which one of the following expressions evaluates to TRUE?
+  Output: Який з наступних виразів дорівнює TRUE?
   CorrectAnswer: "TRUE && FALSE || 9 >= 4 && 3 < 6"
   AnswerChoices: "TRUE && FALSE || 9 >= 4 && 3 < 6; TRUE && 62 < 62 && 44 >= 44; 99.99 > 100 || 45 < 7.3 || 4 != 4.0; FALSE || TRUE && FALSE"
   AnswerTests: omnitest(correctVal='TRUE && FALSE || 9 >= 4 && 3 < 6')
-  Hint: 'Try to evaluate each expression in isolation and build up an answer.'
-  
+  Hint: 'Обчисліть кожен вираз окремо, а потім сформуйте відповідь.'
+
 - Class: mult_question
-  Output: Which one of the following expressions evaluates to FALSE?
+  Output: Який з наступних виразів дорівнює FALSE?
   CorrectAnswer: "FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5"
   AnswerChoices: "FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5; FALSE || TRUE && 6 != 4 || 9 > 4; !(8 > 4) ||  5 == 5.0 && 7.8 >= 7.79; 6 >= -9 && !(6 > 7) && !(!TRUE)"
   AnswerTests: omnitest(correctVal='FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5')
-  Hint: 'Try to evaluate each expression in isolation and build up an answer.'
-  
-- Class : text
-  Output: "Now that you're familiar with R's logical operators you can take advantage
-    of a few functions that R provides for dealing with logical expressions."
-    
-- Class : cmd_question
-  Output: "The function isTRUE() takes one argument. If that argument evaluates to
-    TRUE, the function will return TRUE. Otherwise, the function will return FALSE.
-    Try using this function by typing: isTRUE(6 > 4)"
+  Hint: 'Обчисліть кожен вираз окремо, а потім сформуйте відповідь.'
+
+- Class: text
+  Output: "Тепер, коли ви ознайомилися з логічними операторами R, можна використовувати кілька функцій для роботи з логічними виразами."
+
+- Class: cmd_question
+  Output: "Функція isTRUE() приймає один аргумент. Якщо цей аргумент дорівнює TRUE, функція повертає TRUE. Інакше — FALSE. Спробуйте використовувати цю функцію: isTRUE(6 > 4)"
   CorrectAnswer: "isTRUE(6 > 4)"
   AnswerTests: omnitest(correctExpr='isTRUE(6 > 4)')
-  Hint: "Test out isTRUE() by typing: isTRUE(6 > 4)"
-  
+  Hint: "Спробуйте isTRUE(), написавши: isTRUE(6 > 4)"
+
 - Class: mult_question
-  Output: Which of the following evaluates to TRUE?
+  Output: Який з наступних виразів дорівнює TRUE?
   CorrectAnswer: "!isTRUE(4 < 3)"
   AnswerChoices: "isTRUE(!TRUE); isTRUE(3); isTRUE(NA); !isTRUE(4 < 3); !isTRUE(8 != 5)"
   AnswerTests: omnitest(correctVal='!isTRUE(4 < 3)')
-  Hint: 'isTRUE() will only return TRUE if the statement passed to it as an argument is TRUE.'
-  
-- Class : cmd_question
-  Output: "The function identical() will return TRUE if the two R objects passed to it as arguments
-    are identical. Try out the identical() function by typing: identical('twins', 'twins')"
+  Hint: 'isTRUE() повертає TRUE лише тоді, коли вираз у дужках є TRUE.'
+
+- Class: cmd_question
+  Output: "Функція identical() повертає TRUE, якщо два об'єкти R, передані їй як аргументи, ідентичні. Спробуйте identical(), написавши: identical('twins', 'twins')"
   CorrectAnswer: "identical('twins', 'twins')"
   AnswerTests: omnitest(correctExpr="identical('twins', 'twins')")
-  Hint: "If you want to see if two R objects are identical, type: identical('twins', 'twins')"
-  
+  Hint: "Щоб перевірити ідентичність об'єктів, напишіть: identical('twins', 'twins')"
+
 - Class: mult_question
-  Output: Which of the following evaluates to TRUE?
+  Output: Який з наступних виразів дорівнює TRUE?
   CorrectAnswer: "identical(5 > 4, 3 < 3.1)"
   AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('hello', 'Hello'); !identical(7, 7)"
   AnswerTests: omnitest(correctVal='identical(5 > 4, 3 < 3.1)')
-  Hint: "identical() will only evaluate to TRUE if its arguments are exactly the same."
-  
-- Class : cmd_question
-  Output: "You should also be aware of the xor() function, which takes two arguments. 
-  The xor() function stands for exclusive OR.
-  If one argument evaluates to TRUE and one argument evaluates to FALSE, then this
-  function will return TRUE, otherwise it will return FALSE. Try out the xor() function
-  by typing: xor(5 == 6, !FALSE)"
+  Hint: "identical() повертає TRUE лише якщо обидва аргументи ідентичні."
+
+- Class: cmd_question
+  Output: "Варто також знати про функцію xor(), яка приймає два аргументи. xor() означає виключне АБО. Якщо один аргумент TRUE, а інший FALSE — функція поверне TRUE; інакше — FALSE. Спробуйте xor(), написавши: xor(5 == 6, !FALSE)"
   CorrectAnswer: "xor(5 == 6, !FALSE)"
   AnswerTests: omnitest(correctExpr='xor(5 == 6, !FALSE)')
-  Hint: "Test out the xor() function by typing: xor(5 == 6, !FALSE)"
-  
-- Class : text
-  Output: "5 == 6 evaluates to FALSE, !FALSE evaluates to TRUE, so xor(FALSE, TRUE)
-    evaluates to TRUE. On the other hand if the first argument was changed to 5 == 5
-    and the second argument was unchanged then both arguments would have been TRUE, 
-    so xor(TRUE, TRUE) would have evaluated to FALSE."
-    
+  Hint: "Спробуйте xor(), написавши: xor(5 == 6, !FALSE)"
+
+- Class: text
+  Output: "5 == 6 дорівнює FALSE, !FALSE — це TRUE, тобто xor(FALSE, TRUE) повертає TRUE. А якщо перший аргумент був би 5 == 5, тобто TRUE, то xor(TRUE, TRUE) був би FALSE."
+
 - Class: mult_question
-  Output: Which of the following evaluates to FALSE?
+  Output: Який з наступних виразів дорівнює FALSE?
   CorrectAnswer: "xor(4 >= 9, 8 != 8.0)"
   AnswerChoices: "xor(4 >= 9, 8 != 8.0); xor(!isTRUE(TRUE), 6 > -1); xor(identical(xor, 'xor'), 7 == 7.0); xor(!!TRUE, !!FALSE)"
   AnswerTests: omnitest(correctVal='xor(4 >= 9, 8 != 8.0)')
-  Hint: "For xor() to evaluate to TRUE, one argument must be TRUE and one must be FALSE."
-    
-- Class : cmd_question
-  Output: "For the next few questions, we're going to need to create a vector of 
-   integers called ints. Create this vector by typing: ints <- sample(10)"
+  Hint: "Для xor() потрібен один TRUE і один FALSE, щоб результат був TRUE."
+
+- Class: cmd_question
+  Output: "У наступних завданнях нам знадобиться створити вектор цілих чисел з назвою ints. Створіть цей вектор, ввівши: ints <- sample(10)"
   CorrectAnswer: "ints <- sample(10)"
   AnswerTests: omnitest(correctExpr='ints <- sample(10)')
-  Hint: "To create a vector of ten integers without replacement type: ints <- sample(10)"
-  
-- Class : cmd_question
-  Output: "Now simply display the contents of ints."
+  Hint: "Щоб створити вектор із десяти цілих чисел без повторень, введіть: ints <- sample(10)"
+
+- Class: cmd_question
+  Output: "Тепер просто виведіть вміст вектора ints."
   CorrectAnswer: "ints"
   AnswerTests: omnitest(correctExpr='ints')
-  Hint: "To view the vector type: ints"
-  
-- Class : cmd_question
-  Output: "The vector `ints` is a random sampling of integers from 1 to 10 without
-    replacement. Let's say we wanted to ask some logical questions about contents
-    of ints. If we type ints > 5, we will get a logical vector corresponding to
-    whether each element of ints is greater than 5. Try typing: ints > 5"
+  Hint: "Щоб побачити вектор, введіть: ints"
+
+- Class: cmd_question
+  Output: "Вектор ints — це випадкова вибірка чисел від 1 до 10 без повторень. Скажімо, ми хочемо задати логічні питання щодо ints. Якщо написати ints > 5, отримаємо логічний вектор, де TRUE означає, що елемент більший за 5. Спробуйте: ints > 5"
   CorrectAnswer: "ints > 5"
   AnswerTests: omnitest(correctExpr='ints > 5')
-  Hint: "To see which elements of `ints` are larger than 5 type: ints > 5"
-  
-- Class : text
-  Output: "We can use the resulting logical vector to ask other questions about ints.
-    The which() function takes a logical vector as an argument and returns the indicies
-    of the vector that are TRUE. For example which(c(TRUE, FALSE, TRUE)) would return
-    the vector c(1, 3)."
+  Hint: "Щоб побачити, які елементи ints більші за 5, введіть: ints > 5"
 
-- Class : cmd_question
-  Output: "Use the which() function to find the indicies of ints that are greater 
-    than 7."
+- Class: text
+  Output: "Ми можемо використати отриманий логічний вектор для інших питань про ints. Функція which() приймає логічний вектор і повертає індекси, де значення TRUE. Наприклад, which(c(TRUE, FALSE, TRUE)) поверне вектор c(1, 3)."
+
+- Class: cmd_question
+  Output: "Використайте which(), щоб знайти індекси елементів ints, які більші за 7."
   CorrectAnswer: "which(ints > 7)"
   AnswerTests: omnitest(correctExpr='which(ints > 7)')
-  Hint: "Use the which() function on the logical vector produced by: `ints > 7`"
-  
+  Hint: "Використайте which() для логічного вектора, що дає ints > 7"
+
 - Class: mult_question
-  Output: Which of the following commands would produce the indicies of the elements in ints that
-    are less than or equal to 2?
+  Output: Яка з наступних команд дасть індекси елементів ints, що менші або дорівнюють 2?
   CorrectAnswer: "which(ints <= 2)"
   AnswerChoices: "ints < 2; ints <= 2; which(ints < 2); which(ints <= 2)"
   AnswerTests: omnitest(correctVal='which(ints <= 2)')
-  Hint: 'Use the which() function.'
-  
-- Class : text
-  Output: "Like the which() function, the functions any() and all() take logical
-    vectors as their argument. The any() function will return TRUE if one or more
-    of the elements in the logical vector is TRUE. The all() function will return
-    TRUE if every element in the logical vector is TRUE."
-    
-- Class : cmd_question
-  Output: "Use the any() function to see if any of the elements of ints are less
-    than zero."
+  Hint: 'Використайте функцію which().'
+
+- Class: text
+  Output: "Як і which(), функції any() та all() приймають логічні вектори. any() повертає TRUE, якщо хоча б один елемент TRUE. all() повертає TRUE, якщо всі елементи TRUE."
+
+- Class: cmd_question
+  Output: "Використайте any(), щоб перевірити, чи є серед ints елементи менші за нуль."
   CorrectAnswer: "any(ints < 0)"
   AnswerTests: omnitest(correctExpr='any(ints < 0)')
-  Hint: "Use the any() function on the logical vector produced by: `ints < 0`"
-  
-- Class : cmd_question
-  Output: "Use the all() function to see if all of the elements of ints are greater
-    than zero."
+  Hint: "Використайте any() для логічного вектора ints < 0"
+
+- Class: cmd_question
+  Output: "Використайте all(), щоб перевірити, чи всі елементи ints більші за нуль."
   CorrectAnswer: "all(ints > 0)"
   AnswerTests: omnitest(correctExpr='all(ints > 0)')
-  Hint: "Use the all() function on the logical vector produced by: `ints > 0`"
-  
+  Hint: "Використайте all() для логічного вектора ints > 0"
+
 - Class: mult_question
-  Output: Which of the following evaluates to TRUE?
+  Output: Який з наступних виразів дорівнює TRUE?
   CorrectAnswer: "any(ints == 10)"
   AnswerChoices: "any(ints == 10); all(ints == 10); all(c(TRUE, FALSE, TRUE)); any(ints == 2.5)"
   AnswerTests: omnitest(correctVal='any(ints == 10)')
-  Hint: "any() will evaluate to TRUE if there is one or more TRUE elements in a logical vector."
-  
-- Class : text
-  Output: "That's all for this introduction to logic in R. If you really want to see
-    what you can do with logic, check out the control flow lesson!"
+  Hint: "any() повертає TRUE, якщо хоча б один елемент у логічному векторі TRUE."
+
+- Class: text
+  Output: "Це все для цього вступу до логіки в R. Якщо хочете дізнатися, на що здатна логіка, переходьте до уроку з керування потоком (control flow)!"

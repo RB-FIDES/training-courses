@@ -1,206 +1,206 @@
 - Class: meta
-  Course: R Programming
+  Course: R Programming_Alt
   Lesson: Subsetting Vectors
-  Author: Nick Carchedi
+  Author: Nick Carchedi - переклад (oleksandkov | AI)
   Type: Standard
   Organization: JHU Biostat
   Version: 2.2.0
 
 - Class: text
-  Output: In this lesson, we'll see how to extract elements from a vector based on some conditions that we specify.
+  Output: У цьому уроці ми навчимося витягати елементи з вектора на основі певних умов, які ми задаємо.
 
 - Class: text
-  Output: For example, we may only be interested in the first 20 elements of a vector, or only the elements that are not NA, or only those that are positive or correspond to a specific variable of interest. By the end of this lesson, you'll know how to handle each of these scenarios.
+  Output: Наприклад, нас можуть цікавити лише перші 20 елементів вектора, або лише ті елементи, які не є NA, або лише ті, які додатні, або які відповідають певній змінній з інтересом. Після завершення цього уроку ти знатимеш, як діяти в кожній із цих ситуацій.
 
 - Class: cmd_question
-  Output: I've created for you a vector called x that contains a random ordering of 20 numbers (from a standard normal distribution) and 20 NAs. Type x now to see what it looks like.
+  Output: Я створила для тебе вектор x, який містить випадкове переставлення 20 чисел (зі стандартного нормального розподілу) і 20 NA. Надрукуй x, щоб побачити, як він виглядає.
   CorrectAnswer: x
   AnswerTests: omnitest(correctExpr='x')
-  Hint: Type x to view its contents.
+  Hint: Надрукуй x, щоб подивитись його вміст.
 
 - Class: text
-  Output: The way you tell R that you want to select some particular elements (i.e. a 'subset') from a vector is by placing an 'index vector' in square brackets immediately following the name of the vector.
+  Output: Щоб повідомити R, що ти хочеш вибрати певні елементи (тобто "підмножину") з вектора, потрібно розмістити "індекс-вектор" у квадратних дужках одразу після імені вектора.
 
 - Class: cmd_question
-  Output: For a simple example, try x[1:10] to view the first ten elements of x.
+  Output: Для простого прикладу спробуй x[1:10], щоб переглянути перші десять елементів x.
   CorrectAnswer: x[1:10]
   AnswerTests: omnitest(correctExpr='x[1:10]')
-  Hint: View the first ten elements of x with x[1:10].
+  Hint: Переглянь перші десять елементів x за допомогою x[1:10].
 
 - Class: text
-  Output: Index vectors come in four different flavors -- logical vectors, vectors of positive integers, vectors of negative integers, and vectors of character strings -- each of which we'll cover in this lesson.
+  Output: Індекс-вектори бувають чотирьох типів — логічні вектори, вектори додатних цілих чисел, вектори від’ємних цілих чисел і вектори рядків-символів — кожен з яких ми розглянемо в цьому уроці.
 
 - Class: text
-  Output: Let's start by indexing with logical vectors. One common scenario when working with real-world data is that we want to extract all elements of a vector that are not NA (i.e. missing data). Recall that is.na(x) yields a vector of logical values the same length as x, with TRUEs corresponding to NA values in x and FALSEs corresponding to non-NA values in x.
+  Output: Почнемо з індексування логічними векторами. Поширена ситуація в роботі з реальними даними — це коли ми хочемо витягти всі елементи вектора, які не є NA (тобто відсутні дані). Нагадаю, що is.na(x) повертає вектор логічних значень тієї ж довжини, що й x, де TRUE відповідає NA в x, а FALSE — не NA.
 
 - Class: mult_question
-  Output: What do you think x[is.na(x)] will give you?
-  AnswerChoices: A vector of all NAs; A vector with no NAs; A vector of TRUEs and FALSEs; A vector of length 0
-  CorrectAnswer: A vector of all NAs
-  AnswerTests: omnitest(correctVal="A vector of all NAs")
-  Hint: Remember that is.na(x) tells us where the NAs are in a vector. So if we subset x based on that, what do you expect to happen?
+  Output: Як ти думаєш, що поверне x[is.na(x)]?
+  AnswerChoices: Вектор з усіх NA; Вектор без NA; Вектор з TRUE та FALSE; Вектор довжини 0
+  CorrectAnswer: Вектор з усіх NA
+  AnswerTests: omnitest(correctVal="Вектор з усіх NA")
+  Hint: Пам'ятай, що is.na(x) показує, де є NA у векторі. Якщо ми вибираємо x за цим критерієм, що ти очікуєш побачити?
 
 - Class: cmd_question
-  Output: Prove it to yourself by typing x[is.na(x)].
+  Output: Переконайся самостійно, надрукувавши x[is.na(x)].
   CorrectAnswer: x[is.na(x)]
   AnswerTests: omnitest(correctExpr='x[is.na(x)]')
-  Hint: Type x[is.na(x)] to see that you get all NAs, which is clearly not what we want!
+  Hint: Надрукуй x[is.na(x)] і побачиш, що отримаєш всі NA — це точно не те, чого ми хочемо!
 
 - Class: cmd_question
-  Output: Recall that `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. Give it a try.
+  Output: Нагадаю, що `!` дає заперечення логічного виразу, тому !is.na(x) читається як "не NA". Тому, якщо ми хочемо створити вектор y, який містить усі не NA значення з x, можемо використати y <- x[!is.na(x)]. Спробуй це зробити.
   CorrectAnswer: y <- x[!is.na(x)]
   AnswerTests: omnitest(correctExpr='y <- x[!is.na(x)]')
-  Hint: Type y <- x[!is.na(x)] to capture all non-missing values from x.
+  Hint: Введи y <- x[!is.na(x)], щоб отримати всі не пропущені значення x.
 
 - Class: cmd_question
-  Output: Print y to the console.
+  Output: Виведи y у консоль.
   CorrectAnswer: 'y'
   AnswerTests: omnitest(correctExpr='y')
-  Hint: Type y to view its contents.
+  Hint: Надрукуй y, щоб подивитися його вміст.
 
 - Class: text
-  Output: Now that we've isolated the non-missing values of x and put them in y, we can subset y as we please.
+  Output: Тепер, коли ми виділили не пропущені значення x і помістили їх у y, можемо підмножувати y як завгодно.
 
 - Class: mult_question
-  Output: Recall that the expression y > 0 will give us a vector of logical values the same length as y, with TRUEs corresponding to values of y that are greater than zero and FALSEs corresponding to values of y that are less than or equal to zero. What do you think y[y > 0] will give you?
-  AnswerChoices: A vector of all the positive elements of y; A vector of all the negative elements of y; A vector of all NAs; A vector of length 0; A vector of TRUEs and FALSEs
-  CorrectAnswer: A vector of all the positive elements of y
-  AnswerTests: omnitest(correctVal="A vector of all the positive elements of y")
-  Hint: The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think y[y > 0] will return?
+  Output: Нагадаю, що вираз y > 0 повертає вектор логічних значень тієї ж довжини, що й y, де TRUE відповідає додатним значенням y, а FALSE — нульовим або від’ємним. Як ти думаєш, що поверне y[y > 0]?
+  AnswerChoices: Вектор з усіх додатних елементів y; Вектор з усіх від’ємних елементів y; Вектор з усіх NA; Вектор довжини 0; Вектор з TRUE та FALSE
+  CorrectAnswer: Вектор з усіх додатних елементів y
+  AnswerTests: omnitest(correctVal="Вектор з усіх додатних елементів y")
+  Hint: Логічний вираз y > 0 дасть TRUE для кожного додатного елемента y. Що поверне y[y > 0]?
 
 - Class: cmd_question
-  Output: Type y[y > 0] to see that we get all of the positive elements of y, which are also the positive elements of our original vector x.
+  Output: Введи y[y > 0], щоб побачити всі додатні елементи y, які також є додатними у початковому x.
   CorrectAnswer: y[y > 0]
   AnswerTests: omnitest(correctExpr='y[y > 0]')
-  Hint: Type y[y > 0] to view only the positive elements of y.
+  Hint: Надрукуй y[y > 0], щоб побачити тільки додатні елементи y.
 
 - Class: cmd_question
-  Output: You might wonder why we didn't just start with x[x > 0] to isolate the positive elements of x. Try that now to see why.
+  Output: Ти можеш запитати, чому ми відразу не використали x[x > 0], щоб виділити додатні елементи x. Спробуй це зараз і зрозумієш чому.
   CorrectAnswer: x[x > 0]
   AnswerTests: omnitest(correctExpr='x[x > 0]')
-  Hint: Try x[x > 0] to see why we didn't use this approach.
+  Hint: Спробуй x[x > 0], щоб зрозуміти, чому ми не використали цей підхід.
 
 - Class: text
-  Output: Since NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence we get a bunch of NAs mixed in with our positive numbers when we do this.
+  Output: Оскільки NA — це не значення, а позначка для невідомої величини, вираз NA > 0 повертає NA. Тому ми отримуємо багато NA разом з додатними числами, коли робимо це.
 
 - Class: cmd_question
-  Output: Combining our knowledge of logical operators with our new knowledge of subsetting, we could do this -- x[!is.na(x) & x > 0]. Try it out.
+  Output: Поєднавши знання про логічні оператори й підмноження, можна так: x[!is.na(x) & x > 0]. Спробуй це.
   CorrectAnswer: x[!is.na(x) & x > 0]
   AnswerTests: omnitest(correctExpr='x[!is.na(x) & x > 0]')
-  Hint: Try x[!is.na(x) & x > 0] to see what you get.
+  Hint: Введи x[!is.na(x) & x > 0], щоб побачити результат.
 
 - Class: text
-  Output: In this case, we request only values of x that are both non-missing AND greater than zero.
+  Output: У цьому випадку ми просимо лише ті значення x, які одночасно не пропущені І більші за нуль.
 
 - Class: text
-  Output: I've already shown you how to subset just the first ten values of x using x[1:10]. In this case, we're providing a vector of positive integers inside of the square brackets, which tells R to return only the elements of x numbered 1 through 10.
+  Output: Я вже показувала, як виділити лише перші десять значень x за допомогою x[1:10]. У цьому випадку ми передаємо вектор додатних цілих чисел у квадратних дужках, що каже R повернути елементи x з номерами від 1 до 10.
 
 - Class: text
-  Output: Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is considered element 1.
+  Output: У багатьох мовах програмування використовується "нульова індексація", тобто перший елемент вектора вважається елементом 0. R використовує "одиничну індексацію", тобто перший елемент — це 1.
 
 - Class: cmd_question
-  Output: Can you figure out how we'd subset the 3rd, 5th, and 7th elements of x? Hint -- Use the c() function to specify the element numbers as a numeric vector.
+  Output: Чи можеш ти здогадатися, як виділити 3-й, 5-й і 7-й елементи x? Підказка — використай функцію c(), щоб задати номери елементів як числовий вектор.
   CorrectAnswer: x[c(3, 5, 7)]
   AnswerTests: omnitest(correctExpr='x[c(3, 5, 7)]')
-  Hint: Create a vector of indexes with c(3, 5, 7), then put that inside of the square brackets.
+  Hint: Створи вектор індексів c(3, 5, 7), а потім помісти його у квадратні дужки.
 
 - Class: cmd_question
-  Output: It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 40} since x only has 40 elements. What happens if we ask for the zeroth element of x (i.e. x[0])? Give it a try.
+  Output: Важливо, що при використанні цілих чисел-індексів для підмноження x слід дотримуватися набору індексів {1, 2, ..., 40}, оскільки x має лише 40 елементів. Що буде, якщо ми попросимо нульовий елемент x (тобто x[0])? Спробуй це.
   CorrectAnswer: x[0]
   AnswerTests: omnitest(correctExpr='x[0]')
-  Hint: Try x[0] to see what happens when we refer to the zeroth element of a vector, which is not defined in R.
+  Hint: Спробуй x[0], щоб побачити, що станеться при зверненні до нульового елемента вектора, який у R не визначено.
 
 - Class: cmd_question
-  Output: As you might expect, we get nothing useful. Unfortunately, R doesn't prevent us from doing this. What if we ask for the 3000th element of x? Try it out.
+  Output: Як і очікувалось, нічого корисного ми не отримуємо. На жаль, R не заважає це робити. А якщо попросити 3000-й елемент x? Спробуй це.
   CorrectAnswer: x[3000]
   AnswerTests: omnitest(correctExpr='x[3000]')
-  Hint: Request the 3000th element of x (which does not exist) with x[3000].
+  Hint: Запроси 3000-й елемент x (якого не існує) через x[3000].
 
 - Class: text
-  Output: Again, nothing useful, but R doesn't prevent us from asking for it. This should be a cautionary tale. You should always make sure that what you are asking for is within the bounds of the vector you're working with.
+  Output: Знову ж таки, нічого корисного, але R не запобігає цим діям. Це має бути для тебе попередженням: завжди стеж за тим, щоб твій запит був у межах вектора, з яким ти працюєш.
 
 - Class: text
-  Output: What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be pretty tedious to construct a vector containing all numbers 1 through 40 EXCEPT 2 and 10.
+  Output: А якщо нам потрібні всі елементи x, КРІМ 2-го й 10-го? Було б досить обтяжливо будувати вектор з усіх чисел від 1 до 40, крім 2 та 10.
 
 - Class: cmd_question
-  Output: Luckily, R accepts negative integer indexes. Whereas x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2, -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.  Try x[c(-2, -10)] now to see this.
+  Output: На щастя, R приймає від’ємні цілі індекси. Якщо x[c(2, 10)] дає нам ЛИШЕ 2-й і 10-й елементи x, то x[c(-2, -10)] дає всі елементи x, КРІМ 2-го та 10-го. Спробуй x[c(-2, -10)].
   CorrectAnswer: x[c(-2, -10)]
   AnswerTests: omnitest(correctExpr='x[c(-2, -10)]')
-  Hint: Give x[c(-2, -10)] a try.
+  Hint: Спробуй x[c(-2, -10)].
 
 - Class: cmd_question
-  Output: A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of positive numbers. Type x[-c(2, 10)] to get the exact same result.
+  Output: Скороченим способом задання кількох від’ємних чисел є винесення мінуса перед вектором індексів. Введи x[-c(2, 10)], щоб отримати той самий результат.
   CorrectAnswer: x[-c(2, 10)]
   AnswerTests: omnitest(correctExpr='x[-c(2, 10)]')
-  Hint: Use x[-c(2, 10)] to simply things a bit. This could be a time saver if specifying many negative indexes.
+  Hint: Використай x[-c(2, 10)] для спрощення. Це корисно, якщо багато індексів.
 
 - Class: text
-  Output: So far, we've covered three types of index vectors -- logical, positive integer, and negative integer. The only remaining type requires us to introduce the concept of 'named' elements.
+  Output: Отже, ми розглянули три типи індекс-векторів: логічні, додатні цілі і від’ємні цілі числа. Залишився ще один — потрібно познайомитись із "іменованими" елементами.
 
 - Class: cmd_question
-  Output: Create a numeric vector with three named elements using vect <- c(foo = 11, bar = 2, norf = NA).
+  Output: Створи числовий вектор із трьома іменованими елементами за допомогою vect <- c(foo = 11, bar = 2, norf = NA).
   CorrectAnswer: vect <- c(foo = 11, bar = 2, norf = NA)
   AnswerTests: omnitest(correctExpr='vect <- c(foo = 11, bar = 2, norf = NA)')
-  Hint: Create a named vector with vect <- c(foo = 11, bar = 2, norf = NA).
+  Hint: Створи іменований вектор vect <- c(foo = 11, bar = 2, norf = NA).
 
 - Class: cmd_question
-  Output: When we print vect to the console, you'll see that each element has a name. Try it out.
+  Output: Коли ми надрукуємо vect у консолі, побачиш, що кожен елемент має ім'я. Спробуй це.
   CorrectAnswer: vect
   AnswerTests: omnitest(correctExpr='vect')
-  Hint: Type vect to view its contents.
+  Hint: Надрукуй vect, щоб побачити його вміст.
 
 - Class: cmd_question
-  Output: We can also get the names of vect by passing vect as an argument to the names() function. Give that a try.
+  Output: Ми можемо отримати імена vect через функцію names(vect). Спробуй це.
   CorrectAnswer: names(vect)
   AnswerTests: omnitest(correctExpr='names(vect)')
-  Hint: Check out the results of names(vect).
+  Hint: Перевір результат names(vect).
 
 - Class: cmd_question
-  Output: Alternatively, we can create an unnamed vector vect2 with c(11, 2, NA). Do that now.
+  Output: Також можемо створити неіменований вектор vect2 через c(11, 2, NA). Зроби це.
   CorrectAnswer: vect2 <- c(11, 2, NA)
   AnswerTests: omnitest(correctExpr='vect2 <- c(11, 2, NA)')
-  Hint: Create an ordinary (unnamed) vector called vect2 that contains c(11, 2, NA).
+  Hint: Створи звичайний (неіменований) вектор vect2 з c(11, 2, NA).
 
 - Class: cmd_question
-  Output: Then, we can add the `names` attribute to vect2 after the fact with names(vect2) <- c("foo", "bar", "norf"). Go ahead.
+  Output: Потім можемо додати атрибут names до vect2 вже після створення: names(vect2) <- c("foo", "bar", "norf"). Зроби це.
   CorrectAnswer: names(vect2) <- c("foo", "bar", "norf")
   AnswerTests: omnitest(correctExpr='names(vect2) <- c("foo", "bar", "norf")')
-  Hint: Add names to vect2 with names(vect2) <- c("foo", "bar", "norf").
+  Hint: Додай імена до vect2 через names(vect2) <- c("foo", "bar", "norf").
 
 - Class: cmd_question
-  Output: Now, let's check that vect and vect2 are the same by passing them as arguments to the identical() function.
+  Output: Тепер перевіримо, чи vect і vect2 однакові, передавши їх у функцію identical().
   CorrectAnswer: identical(vect, vect2)
   AnswerTests: any_of_exprs('identical(vect, vect2)', 'identical(vect2, vect)')
-  Hint: The identical() function tells us if its first two arguments are, well, identical.
+  Hint: Функція identical() показує, чи її перші два аргументи — ідентичні.
 
 - Class: text
-  Output: Indeed, vect and vect2 are identical named vectors.
+  Output: Справді, vect і vect2 — це однакові іменовані вектори.
 
 - Class: mult_question
-  Output: Now, back to the matter of subsetting a vector by named elements. Which of the following commands do you think would give us the second element of vect?
+  Output: Тепер повернімось до підмноження вектора за іменованими елементами. Яка з наступних команд, на твою думку, поверне другий елемент vect?
   AnswerChoices: vect["bar"]; vect[bar]; vect["2"]
   CorrectAnswer: vect["bar"]
   AnswerTests: omnitest(correctVal='vect["bar"]')
-  Hint: If we want the element named "bar" (i.e. the second element of vect), which command would get us that?
+  Hint: Якщо нам треба елемент із іменем "bar" (другий у vect), якою командою його отримати?
 
 - Class: cmd_question
-  Output: Now, try it out.
+  Output: Спробуй це зараз.
   CorrectAnswer: vect["bar"]
   AnswerTests: omnitest(correctExpr='vect["bar"]')
-  Hint: Try vect["bar"].
+  Hint: Спробуй vect["bar"].
 
 - Class: cmd_question
-  Output: Likewise, we can specify a vector of names with vect[c("foo", "bar")]. Try it out.
+  Output: Так само можна задати вектор імен: vect[c("foo", "bar")]. Спробуй це.
   CorrectAnswer: vect[c("foo", "bar")]
   AnswerTests: omnitest(correctExpr='vect[c("foo", "bar")]')
-  Hint: Use vect[c("foo", "bar")] to get only the elements of vect named "foo" and "bar".
+  Hint: Використай vect[c("foo", "bar")], щоб отримати лише елементи vect з іменами "foo" та "bar".
 
 - Class: text
-  Output: Now you know all four methods of subsetting data from vectors. Different approaches are best in different scenarios and when in doubt, try it out!
+  Output: Тепер ти знаєш усі чотири способи підмноження даних з векторів. Різні підходи кращі для різних ситуацій — якщо не впевнений, спробуй!
 
 - Class: mult_question
-  Output: Would you like to inform someone about your successful completion of this lesson?
+  Output: Бажаєш проінформувати когось про успішне завершення цього уроку?
   CorrectAnswer: NULL
-  AnswerChoices: Yes; No
+  AnswerChoices: Так; Ні
   AnswerTests: notify()
   Hint: NULL
