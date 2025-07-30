@@ -38,5 +38,4 @@ temp/
 swirl-courses/**/*-DISABLED.yaml
 swirl-courses/**/*-ACTIVE.yaml
 swirl-courses/**/*_original.yaml
-swirl-courses/**/lesson.yaml
 
