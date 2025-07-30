@@ -1,5 +1,4 @@
 # MAIN FILE FOR ACTIVATING UKRAINIAN LANGUAGE IN SWIRL
-
 source("activate_ukrainian_labels.R")
 
 al <- function(name, lang = NULL) {
