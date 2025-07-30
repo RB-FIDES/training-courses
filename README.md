@@ -12,13 +12,16 @@ Interactive courses for learning statistics and data analysis with full Ukrainia
 install.packages("swirl") # if you don't have any ( якщо ще не встановив, якщо вже встановлював то не треба )
 library(swirl)
 source("setup_complete.R") # швидке налаштування 
-install_course_interactive() # необхідно встановити курси які бажаєте пройти
 swirl()
 ```
 Якщо ви хочете детальніше налаштування, то слід використати наступний спосіб активації: 
 ```r
 source("activate_ukrainian.R")
 activate()
+```
+
+```r
+infor_fun() # команди для керування після активації
 ```
 If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
 
