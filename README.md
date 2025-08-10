@@ -9,16 +9,24 @@ Interactive courses for learning statistics and data analysis with full Ukrainia
 Цей спосіб активації рекомендується:
 ```r
 # Install swirl package / Встановити пакет swirl
-install.packages("swirl")
+install.packages("swirl") # if you don't have any ( якщо ще не встановив, якщо вже встановлював то не треба )
 library(swirl)
-
-# Activate Ukrainian interface / Активувати український інтерфейс
+source("setup_complete.R") # швидке налаштування 
+swirl()
+```
+Якщо ви хочете детальніше налаштування, то слід використати наступний спосіб активації: 
+```r
 source("activate_ukrainian.R")
 activate()
 ```
 Якщо у вас виникає проблеми з активацією, то слід використати наступний спосіб:
 ```r
 source("setup_complete.R")
+```
+If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
+
+```r
+infor_fun() # команди для керування після активації
 ```
 If you want to know more about the activation process, see the [Activation Guide](docs/ACTIVATION_UKRAINIAN_GUIDE.md).
 
@@ -65,6 +73,9 @@ This project uses the [FIDES framework](ai/FIDES.md) for human-AI collaborative 
 2. Install R and required packages / Встановіть R та необхідні пакети
 3. Follow the Ukrainian activation guide / Дотримуйтесь посібника з активації української версії
 4. Start learning! / Почніть навчання!
+
+## Overview workflow
+If you want to know more about the repository and the files that it contains - check [Files-describer](FILES_DESCRIBER.md)
 
 ## 📄 License / Ліцензія
 
