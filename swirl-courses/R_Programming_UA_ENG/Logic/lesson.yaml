@@ -7,6 +7,16 @@
   Version: 2.2.15
 
 - Class: text
+  Output: |
+    Словник:
+    
+    1 —
+    
+    2 — 
+    
+    3 —
+
+- Class: text
   Output: "Цей урок є коротким вступом до логічних операцій в R."
 
 - Class: text

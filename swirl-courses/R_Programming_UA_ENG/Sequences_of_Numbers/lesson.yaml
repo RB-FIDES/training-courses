@@ -7,6 +7,16 @@
   Version: 2.2.0
 
 - Class: text
+  Output: |
+    Словник:
+    
+    1 —
+    
+    2 — 
+    
+    3 — 
+
+- Class: text
   Output: Галю, в цьому уроці ти навчишся створювати послідовності чисел (sequences of numbers) в R.
 
 - Class: cmd_question
