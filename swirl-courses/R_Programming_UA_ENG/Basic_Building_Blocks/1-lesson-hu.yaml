@@ -7,31 +7,8 @@
   Version: 2.2.0
   
 - Class: text
-  Output: "Вокабуляр уього уроку. Assignment - присвоєння, variable - зміна, vector - вектор, to combine - комбінувати, to concatenate - зʼєднувати, to add - додавати, to subtract - віднімати, to divide - ділити, to raise to a power -  підносити до степеню"
-- Class: text
-  Output: |
-    Вокабуляр:
-    
-    assignment — присвоєння
-    
-    to add — додавати
-    
-    to combine — комбінувати
-   
-    to concatenate — зʼєднувати
-    
-    to divide — ділити
-    
-    to raise to a power  — підносити до степеню
-    
-    to recycle — переробляти
-   
-    to subtract — віднімати
-    
-    variable — зміна
-    
-    vector  — вектор 
-    
+  Output: "Вокабуляр уього уроку. Assignment - присвоєння, variable - зміна, vector - вектор, to combine - комбінувати, to concatenate - зʼєднувати, to add - додавати, to subtract - віднімати, to divide - ділити, to raise to a power -  підносити до степеню, to recycle — переробляти."
+
 - Class: text
   Output: На цьому уроці ти вивчиш базові блоки мови програмування R.
 
