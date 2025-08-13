@@ -7,7 +7,7 @@
   Version: 2.2.0
 
 - Class: text
-  Output: Вокабуляр уього уроку. Seq - послідовність, sequences of number - послідовність чисел, colon - двокрапка, length - довжина, argument - аргумент, replicate - повторювати, time - час, раз, each - кожен.
+  Output: "Вокабуляр уього уроку. Seq - послідовність, sequences of number - послідовність чисел, colon - двокрапка, length - довжина, argument - аргумент, replicate - повторювати, time - час, раз, each - кожен."
   
 - Class: text
   Output: В цьому уроці ти навчишся створювати послідовності чисел (sequences of numbers) в R.
