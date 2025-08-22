@@ -77,6 +77,18 @@ This project uses the [FIDES framework](ai/FIDES.md) for human-AI collaborative 
 ## Overview workflow
 If you want to know more about the repository and the files that it contains - check [Files-describer](FILES_DESCRIBER.md)
 
+## `renv` usage
+
+The `renv` package was created to help you be sure that the project can be run on your device.
+
+`renv.lock` - the file that contains the information about the version of packages that were used to create this project
+`renv` - file from the package "renv" 
+
+```r
+renv::restore() # use it to download all necessary packages from the `.lock` file
+```
+
+
 ## 📄 License / Ліцензія
 
 MIT License - see [LICENSE](LICENSE) file for details
